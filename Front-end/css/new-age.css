@@ -29,6 +29,31 @@ body {
 .text-muted{
   color: #ffb951
 }
+
+#seekBody{
+  background: #ffb951;
+
+}
+
+#skillsets{
+  background: #ffb951;
+}
+
+#results{
+  background: #fff;
+}
+
+#geekBody{
+  background: #5196ff;
+}
+
+#geekSkill{
+background: #5196ff;
+}
+
+#jobResults{
+  background: #fff;
+}
 a {
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;

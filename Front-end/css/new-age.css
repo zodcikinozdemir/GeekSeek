@@ -5,6 +5,24 @@
 
  this is bootstrap CSS config that can be used across the pages
  */
+
+#video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(GeekSeekPoster.png) no-repeat;
+    background-size: cover;
+}
+.container h1 {
+    color: white;
+}
 .heading-font {
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
@@ -182,7 +200,7 @@ header {
   min-height: auto;
   overflow-y: hidden;
   
-  background:  #5196ff;
+  background:  transparent;
 
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */

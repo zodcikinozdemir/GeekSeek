@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 
-var initdb = require("db/initialize.js");
+//var initdb = require("./db/initialize_db.js");
 
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use(bodyParser.urlencoded({ extended: true }));

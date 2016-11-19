@@ -1,17 +1,21 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var GeekSkill = sequelize.define('GeekSkill', {
-    
-    geekId: { 
-      allowNull: false,
-      type: DataTypes.INTEGER
+    geekId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
-    skillId: { 
-      type: DataTypes.INTEGER
+    skillId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
-    rating: { 
-      allowNull: false,
-      type: DataTypes.INTEGER
-    },
+    rating: DataTypes.INTEGER
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+      }
+    }
+  });
   return GeekSkill;
 };

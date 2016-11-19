@@ -1,7 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var SeekerSkill = sequelize.define('SeekerSkill', {
-    
     seekerId: { 
       allowNull: false,
       type: DataTypes.INTEGER
@@ -16,6 +15,12 @@ module.exports = function(sequelize, DataTypes) {
     weight: { 
       type: DataTypes.INTEGER
     },
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+      }
+    }
   });
-  return Seeker;
+  return SeekerSkill;
 };

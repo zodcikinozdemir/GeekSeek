@@ -2,13 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 
-var models = require('./models');
-var sequelizeConnection = models.sequelize;
-// sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
-
-// .then(function(){
-// 	return sequelizeConnection.sync({force:true})
-// });
+var initdb = require("db/initialize.js");
 
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use(bodyParser.urlencoded({ extended: true }));

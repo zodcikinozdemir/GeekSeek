@@ -1,0 +1,27 @@
+INSERT INTO geek(name, email, phone, zip) VALUES ('Gracie', 'gudiaz@msn.com', '888-1MA-GEEK', '07059');
+INSERT INTO geek(name, email, phone, zip) VALUES ('Sandra', 'sandramduarte83@gmail.com', '888-2MA-GEEK', '08825');
+INSERT INTO geek(name, email, phone, zip) VALUES ('Zeynep', 'odcikin@msn.com', '888-3MA-GEEK', '07908');
+INSERT INTO geek(name, email, phone, zip) VALUES ('Mike', 'mikeamon21@gmail.com', '888-4MA-GEEK', '07206');
+INSERT INTO geek(name, email, phone, zip) VALUES ('Ravi', 'rcjogee@gmail.com', '888-5MA-GEEK', '07302');
+
+INSERT INTO skill(name) VALUES ('HTML');
+INSERT INTO skill(name) VALUES ('CSS');
+INSERT INTO skill(name) VALUES ('Node');
+INSERT INTO skill(name) VALUES ('Javascript');
+INSERT INTO skill(name) VALUES ('jQuery');
+INSERT INTO skill(name) VALUES ('Express');
+INSERT INTO skill(name) VALUES ('AJAX');
+INSERT INTO skill(name) VALUES ('JSON');
+INSERT INTO skill(name) VALUES ('XML');
+INSERT INTO skill(name) VALUES ('MS SQL');
+INSERT INTO skill(name) VALUES ('MySQL');
+INSERT INTO skill(name) VALUES ('Mongo DB');
+INSERT INTO skill(name) VALUES ('Mongoose');
+INSERT INTO skill(name) VALUES ('Sequelize');
+INSERT INTO skill(name) VALUES ('React');
+INSERT INTO skill(name) VALUES ('Angular');
+INSERT INTO skill(name) VALUES ('Meteor');
+INSERT INTO skill(name) VALUES ('Handlebars');
+INSERT INTO skill(name) VALUES ('SEO');
+INSERT INTO skill(name) VALUES ('REST');
+INSERT INTO skill(name) VALUES ('SOAP');

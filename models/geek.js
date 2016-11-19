@@ -7,7 +7,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      }
     },
     phone: {
       type: DataTypes.STRING,
@@ -17,10 +20,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
   }, {
+    paranoid: true,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-      }
+        Geek.belongsToMany(models.Skill, {through: 'GeekSkill'});
+       }
     }
   });
   return Geek;

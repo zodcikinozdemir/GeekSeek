@@ -61,12 +61,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                  <!-- about button -->
-                    <li>
-                    <a href="#">about</a>
-                </li>
                    <!--Sign in-->
-                     <form class="navbar-form navbar-left" action="/signIn">
+                     <form class="navbar-form navbar-left">
+
                         <div class="form-group">
                           <input type="email" class="form-control" id="SignInEmail" aria-describedby="emailSignIn" placeholder="Email">
                           <input type="password" class="form-control" id="signInPassword" aria-describedby="passwordSignIn" placeholder="Password">
@@ -96,6 +93,7 @@
                         <!--Sign up form-->
 
                          
+                         <form action="/reserve" method="POST">
                          <form action="/signUp" method="POST">
                               
                          <br><br><br>
@@ -119,6 +117,13 @@
                               
                               <div class="form-group">
                                 <label for="Password">Password</label>
+                                <input type="text" class="form-control" id="Password" aria-describedby="phoneHelp" placeholder="Enter Password">
+                                <small id="passwordHelp" class="form-text text-muted">Knock knock. Who's there? You.</small>
+                              </div>
+                              <div class="form-group">
+                                <label for="CustomerName">Zip</label>
+                                <input type="text" class="form-control" id="CustomerName" aria-describedby="nameHelp" placeholder="Enter 5 digit ZIP code">
+
                                 <input type="password" class="form-control" id="passwordSignIn" aria-describedby="passwordSetUp" placeholder="Enter Password">
                                 <small id="passwordHelp" class="form-text text-muted">Knock knock. Who's there? You.</small>
                               </div>

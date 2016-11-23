@@ -20,6 +20,8 @@ connection.connect(function(err) {
 displayUsers();
 displayGeeks();
 displaySkills();
+showGeeks();
+showSeekers();
 
 });
 
@@ -46,6 +48,24 @@ function displaySkills(){
 	 connection.query('SELECT * FROM Skills', function(err, res) {
         for (var i = 0; i < res.length; i++) {
             console.log(res[i].skillName);
+        }
+        console.log("------------------------------");
+    });
+}
+
+function showGeeks(){
+	connection.query('SELECT * FROM Users WHERE userType = "Geek"', function(err, res) {
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i].id + " | " + res[i].userType + " | "+ res[i].username + " | " + res[i].zipCode);
+        }
+        console.log("------------------------------");
+    });
+}
+
+function showSeekers(){
+	connection.query('SELECT * FROM Users WHERE userType = "Seeker"', function(err, res) {
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i].id + " | " + res[i].userType + " | "+ res[i].username + " | " + res[i].zipCode);
         }
         console.log("------------------------------");
     });

@@ -451,7 +451,7 @@ footer ul li a.active {
   padding-left: 0;
 }
 .btn-outline {
-  color: white;
+  color: #A9A9A9;
   border-color: white;
   border: 1px solid;
 }
@@ -459,7 +459,7 @@ footer ul li a.active {
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-  color: white;
+  color: #A9A9A9;
   background-color: #fdcc52;
   border-color: #fdcc52;
 }

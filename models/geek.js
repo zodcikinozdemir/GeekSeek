@@ -1,31 +1,48 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Geek = sequelize.define('Geek', {
-    name: {
+    
+   username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    validate: {
+     isEmail: true,
+    }
+  },
+    
+    zipCode: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    email: {
+    }
+  }, {
+    HTML: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true,
-      }
-    },
-    phone: {
+      
+    }
+  }, {
+    CSS:{
       type: DataTypes.STRING,
-    },
-    zip: {
+    }
+  }, {
+    JAVASCRIPT: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
+    }
+  }, {
+    MYSQL: {
+      type: DataTypes.STRING,
+    }
+  }, {
+    NODE: {
+      type: DataTypes.STRING,
+    }
   }, {
     paranoid: true,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
         Geek.belongsToMany(models.Skill, {through: 'GeekSkill'});
-       }
+     }
     }
   });
   return Geek;

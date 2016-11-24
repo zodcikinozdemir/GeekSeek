@@ -1,6 +1,11 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Seeker = sequelize.define('Seeker', {
+  var User = sequelize.define('User', {
+    userType: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    
+  },
     username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -13,24 +18,21 @@ module.exports = function(sequelize, DataTypes) {
   zipCode: {
     type: DataTypes.STRING,
   },
-  companyName: {
+  password: {
     type: DataTypes.STRING,
   },
-
-  // password: {
-  //   type: DataTypes.STRING,
-  // },
-  // salt: {
-  //   type: DataTypes.STRING
-  // },
+  salt: {
+    type: DataTypes.STRING
+  },
   }, {
     paranoid: true,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-         Seeker.belongsToMany(models.Skill, {through: 'SeekerSkill'});
-     }
+        // User.belongsToMany(models.Geek, {through: 'Geeks'});
+        // User.belongsToMany(models.Seeker, {through:'Seekers'});
+       }
     }
   });
-  return Seeker;
+  return User;
 };

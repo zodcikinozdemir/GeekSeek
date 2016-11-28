@@ -17,6 +17,9 @@ module.exports = function(sequelize, DataTypes) {
  
   zipCode: {
     type: DataTypes.STRING,
+
+      allowNull: true,
+
   },
   password: {
     type: DataTypes.STRING,
@@ -24,13 +27,16 @@ module.exports = function(sequelize, DataTypes) {
   salt: {
     type: DataTypes.STRING
   },
+
   }, {
     paranoid: true,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        // User.belongsToMany(models.Geek, {through: 'Geeks'});
-        // User.belongsToMany(models.Seeker, {through:'Seekers'});
+        User.hasMany(models.Query);
+        User.hasOne(models.Geek);
+        User.hasOne(models.Seeker);
+        // User.belongsToMany(models.Query, {as: 'User_id', through: 'Queries'});
        }
     }
   });

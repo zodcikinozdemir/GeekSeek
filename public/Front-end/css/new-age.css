@@ -5,6 +5,10 @@
 
  this is bootstrap CSS config that can be used across the pages
  */
+#login {
+  color:#f29a5c;
+  border-color:#f29a5c;
+}
 #video {
     position: fixed;
     top: 50%;
@@ -456,8 +460,8 @@ footer ul li a.active {
   border: 1px solid;
 }
 .btn-outline:hover,
-.btn-outline:focus,
 .btn-outline:active,
+.btn-outline:focus,
 .btn-outline.active {
   color: white;
   background-color: #fdcc52;

@@ -460,8 +460,8 @@ footer ul li a.active {
   border: 1px solid;
 }
 .btn-outline:hover,
-.btn-outline:focus,
 .btn-outline:active,
+.btn-outline:focus,
 .btn-outline.active {
   color: white;
   background-color: #fdcc52;

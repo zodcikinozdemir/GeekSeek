@@ -6,27 +6,27 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     html: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true
 
   }, 
     css:{
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
             allowNull: true
 
   }, 
     javascript: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
           allowNull: true
 
   }, 
    mysql: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
             allowNull: true
 
     },
     node: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
             allowNull: true
 
     }

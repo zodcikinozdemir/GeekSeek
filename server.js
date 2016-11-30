@@ -1,11 +1,9 @@
 var express = require("express");
-var bodyParser = require("body-parser");
 var app = express();
-var setupPassport = require('./setupPassport'),
-    flash = require('connect-flash'),
-    session = require('express-session'),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser');
+var setupPassport = require('./setupPassport');
+var flash = require('connect-flash');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 var initdb = require("./db/initialize_db.js");
 
@@ -20,20 +18,18 @@ app.use(function(req, res, next) {
     next()
 });
 
-app.use(bodyParser.json({ type: 'application/json' }));
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({type: 'application/json' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var routes = require('./controllers/geekseek_controller.js');
 var methodOverride = require('method-override');
-var bodyParser = require('body-parser');
-
 
 app.use(express.static(process.cwd() + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride('_method'));
 
 var exphbs = require('express-handlebars');
-
 var hbs = exphbs.create({
     defaultLayout: 'app',
     helpers: {
@@ -47,7 +43,6 @@ var hbs = exphbs.create({
 
 app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
-
 
 setupPassport(app);
 

@@ -34,7 +34,7 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 		username: "john@email.com",
 		zipCode: "12345",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
@@ -44,7 +44,7 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 		username: "sd@email.com",
 		zipCode: "08854",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
@@ -54,7 +54,7 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 		username: "mikeamon21@gmail.com",
 		zipCode: "12345",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
@@ -64,7 +64,7 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 		username: "rcjogee@gmail.com",
 		zipCode: "12345",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
@@ -74,7 +74,7 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 		username: "odcikin@msn.com",
 		zipCode: "12345",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
@@ -84,7 +84,7 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 		username: "gudiaz@msn.com",
 		zipCode: "07059",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 

@@ -12,14 +12,16 @@ var User = require ('../models/')["User"];
   router.get("/geeks", function(req, res) {
       Geek.findAll()
       	.then(function(data){
-      		res.json(data);
+          res.render('geeks', {geeks: data});
+      		//res.json(data);
       });
   });
 
   router.get("/seekers", function(req, res) {
       Seeker.findAll()
       	.then(function(data){
-      		res.json(data);
+      		res.render('seekers', {seekers: data});
+          //res.json(data);
       });
   });
 
@@ -55,6 +57,9 @@ var User = require ('../models/')["User"];
       failureFlash: true 
   }));
 
+  router.get('/login', function(req, res) {
+    res.render('login');
+  });
 
   router.get('/', function(req, res) {
     res.render('home');
@@ -64,12 +69,13 @@ var User = require ('../models/')["User"];
     res.render('dashboard');
   });
 
+  router.get('/editprofile', function(req, res) {
+    res.render('editprofile');
+  });
+
   router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
   });
-
-
-
 
 module.exports = router;

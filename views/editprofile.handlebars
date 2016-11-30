@@ -1,0 +1,82 @@
+{{#section 'head'}}
+{{!--     <link rel="stylesheet" href="/styles/profile.css">
+ --}}
+ {{/section}}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/dashboard">GeekSeek</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="logout-link" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/editprofile">My Skills <span class="sr-only">(current)</span></a></li>
+        <li><a href="/seekers">My Matches</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h4><strong>HTML</strong></h4>
+	 	<select class="chosen" id="q1">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+
+		<h4><strong>CSS</strong></h4>
+		<select class="chosen" id="q2">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+
+
+		<h4><strong>Javascript</h4>
+	 	<select class="chosen" id="q3">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+
+
+		<h4><strong>MySQL</h4>
+	 	<select class="chosen" id="q4">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+
+
+		<h4><strong>Node</h4>
+	 	<select class="chosen" id="q5">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+</div>
+</div>
+</div>

@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "root",
     "database": "geekseek_db",
     "host": "localhost",
     "dialect": "mysql"

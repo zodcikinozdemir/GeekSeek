@@ -69,6 +69,12 @@ var User = require ('../models/')["User"];
     res.render('dashboard');
   });
 
+  router.post('/editprofile', function(req, res) {
+     console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
+      + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
+     res.render('dashboard'); 
+  });
+
   router.get('/editprofile', function(req, res) {
     res.render('editprofile');
   });

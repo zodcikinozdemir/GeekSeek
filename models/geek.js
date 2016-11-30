@@ -2,19 +2,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Geek = sequelize.define('Geek', {
     
-  //  username: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false,
-  //   unique: true,
-  //   validate: {
-  //    isEmail: true,
-  //   }
-  // },
-  //   zipCode: {
-  //     type: DataTypes.STRING,
-  //     allowNull: false
-  //   },
-    
     html: {
       type: DataTypes.INTEGER,
       allowNull: true

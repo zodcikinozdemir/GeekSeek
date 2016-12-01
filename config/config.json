@@ -4,7 +4,8 @@
     "password": "root",
     "database": "geekseek_db",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "renderJSON": "0"
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",

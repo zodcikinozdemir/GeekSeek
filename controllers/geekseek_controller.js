@@ -52,7 +52,7 @@ var User = require ('../models/')["User"];
   router.post('/signup', signupController.signup);
 
   router.post('/login', passport.authenticate('local', {
-      successRedirect: '/dashboard',
+      successRedirect: '/geeks',
       failureRedirect: '/',
       failureFlash: true 
   }));
@@ -65,19 +65,23 @@ var User = require ('../models/')["User"];
     res.render('home');
   });
 
-  router.get('/dashboard', isAuthenticated, function(req, res) {
-    res.render('dashboard');
+  router.get('/geeks', isAuthenticated, function(req, res) {
+    res.render('geeks');
   });
 
   router.post('/editprofile', function(req, res) {
      console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
       + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
-     res.render('dashboard'); 
+     res.render('geeks'); 
   });
 
   router.get('/editprofile', function(req, res) {
     res.render('editprofile');
   });
+
+  // router.get('/saveQuery', function(req, res) {
+  //   res.render('saveQuery');
+  // });
 
   router.get('/logout', function(req, res) {
     req.logout();

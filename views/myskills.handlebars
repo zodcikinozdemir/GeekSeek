@@ -32,8 +32,9 @@
 
     <div class="col-sm-5 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-    <h4>display user's skills /geek/find/:id </h4>
-{{!--         <form method="POST" action="/geek/find/:id" class="form-myskills">
+
+{{!--     <h4>display user's skills /geek/find/:id </h4>
+ --}}        <form method="POST" action="/myskills" class="form-myskills">
 
  {{#each geeks}}
           <tr>
@@ -44,7 +45,9 @@
               <td>{{node}}</td>
           </tr>
         {{/each}}
-        </form> --}}
+        </form>
+         <button class="btn btn-lg btn-primary btn-block" href = '/editskills' type="save">Edit Skills?</button>
+
 </div>
 
 
@@ -107,7 +110,8 @@
         </select>
 
             <!-- Submit Button -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit`</button>
+    <form method="PUT" action="/geek/update/:id" class="form-updateskills">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   </form>
 </div>
 

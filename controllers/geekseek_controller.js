@@ -32,7 +32,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/dashboard',
+    successRedirect: '/newquery',
     failureRedirect: '/login',
     failureFlash: true 
 }));
@@ -51,6 +51,11 @@ router.get('/logout', function(req, res) {
 
 router.get('/dashboard', isAuthenticated, function(req, res) {
   res.render('dashboard');
+});
+
+router.post('/dashboard', function(req, res) {
+  
+   res.render('dashboard'); 
 });
 
 /////NEW QUERY//// For logged in user to create, submit, save their query, review results
@@ -124,8 +129,12 @@ router.post('/editprofile', function(req, res) {
 });
 
 
-/////EDIT SKILLS//// For logged in user to add and update their skillset against the Geeks table by UserId
-router.get("/geek/find/:id", function(req, res) { //This should get their current skills according to logged in UserId
+
+/////////////MY SKILLS////////////////////////
+
+
+
+router.get("/myskills", function(req, res) { //This should get their current skills according to logged in UserId
     Geek.findOne({where: {UserId: req.params.id} })
       .then(function(data){
         if (renderJSON) {
@@ -151,15 +160,15 @@ router.post('/editskills', function(req, res) {
 
 //This will update the skills in the Geek table based on the id passed
 router.put('/geek/update/:id', function(req, res) {
-    console.log('updating geek id: ' + req.params.id);
+    console.log('updating users geek skills: ' + req.params.id);
     Geek.update({html: req.body.q1, 
                  css: req.body.q2,
                  javascript: req.body.q3,
                  mysql: req.body.q4,
                  node: req.body.q5
-                },{where: {id: req.params.id}})
+                },{where: {UserId: req.params.id}})
     .then(function(){
-        res.redirect('/profile');
+        res.redirect('myskills');
     });
 });
 
@@ -167,37 +176,9 @@ router.put('/geek/update/:id', function(req, res) {
 router.delete('/geek/delete/:id', function (req, res) {
     Geek.destroy({where: {id: req.params.id}})
     .then(function(){
-        res.redirect('/geeks');
+        res.redirect('myskills');
     });
 });
-
-/////////////MY SKILLS////////////////////////
-
-//This will add a new record to the Skills table
-router.post('/skill/create', function(req, res) {
-    Skill.create({skillName: req.body.skillName})
-    .then(function() {
-        if (renderJSON) {
-          console.log('skill ' + req.body.skillName + ' added.');
-        } else {
-          res.redirect('/skills');
-        }
-    });
-});
-
-//This will return all of my skills
-router.get("/myskills", function(req, res) {
-    Geek.findOne({where: {UserId: '3'}}) //need to collect logged in user's id
-      .then(function(data){
-        if (renderJSON) {
-          res.json(data);
-        } else {
-          res.render('myskills', {geeks: data});          
-        }
-    });
-
-});
-
 
 /////OTHER///////
 //This will return all of the information in the Geek table
@@ -211,7 +192,17 @@ router.get("/geeks", function(req, res) {
         }
     });
 });
-
+//This will add a new record to the Skills table
+router.post('/skill/create', function(req, res) {
+    Skill.create({skillName: req.body.skillName})
+    .then(function() {
+        if (renderJSON) {
+          console.log('skill ' + req.body.skillName + ' added.');
+        } else {
+          res.redirect('/skills');
+        }
+    });
+});
 
 module.exports = router;
 

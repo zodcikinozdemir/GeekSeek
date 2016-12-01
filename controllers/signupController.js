@@ -7,10 +7,10 @@ module.exports.show = function(req, res) {
 }
 
 module.exports.signup = function(req, res) {
+  var id = req.body.id;
   var username = req.body.username;
   var password = req.body.password;
   var password2 = req.body.password2;
-  // var userType = req.body.userType;
   var zipCode = req.body.zipCode;
   
   if (!username || !password || !password2) {
@@ -26,7 +26,7 @@ module.exports.signup = function(req, res) {
   var salt = bcrypt.genSaltSync(10)
   var hashedPassword = bcrypt.hashSync(password, salt)
   var newUser = {
-    // userType: userType,
+    id: id,
     username: username,
     salt: salt,
     password: hashedPassword,
@@ -35,7 +35,7 @@ module.exports.signup = function(req, res) {
   
   User.create(newUser).then(function() {
       // if(userType=='seeker') {
-       res.redirect('/seekers')
+       res.redirect('/newquery')
       // } else {
       //   res.redirect('/geeks');
       // }

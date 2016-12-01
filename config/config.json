@@ -5,7 +5,7 @@
     "database": "geekseek_db",
     "host": "localhost",
     "dialect": "mysql",
-    "renderJSON": "1"
+    "renderJSON": "0"
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",

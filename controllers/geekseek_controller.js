@@ -31,8 +31,20 @@ router.get('/login', function(req, res) {
   res.render('login');
 });
 
+router.get('/currentuser', function (req, res){
+    User.findOne({where: {id: req.params.id} })
+      .then(function(data){
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render({user: data});
+        }
+    });
+});
+
+
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/newquery',
+    successRedirect: '/dashboard',
     failureRedirect: '/login',
     failureFlash: true 
 }));
@@ -77,11 +89,11 @@ router.post('/newquery', function(req, res) {
 router.put('/query/insert/:id', function(req, res) {
     console.log('updating query for user: ' + req.params.id);
     Query.update({queryName: req.body.queryName, 
-                 html: req.body.q1.value,
-                 css: req.body.q2.value,
-                 javascript: req.body.q3.value,
-                 mysql: req.body.q4.value,
-                 node: req.body.q5.value
+                 html: req.body.q1,
+                 css: req.body.q2,
+                 javascript: req.body.q3,
+                 mysql: req.body.q4,
+                 node: req.body.q5
                 },{where: {UserId: req.params.id}})
     .then(function(){
         res.redirect('/savedqueries');
@@ -91,8 +103,7 @@ router.put('/query/insert/:id', function(req, res) {
 /////SAVED QUERIES//// For logged in user to view their saved queries by UserId
 //This will return saved queries based on the id passed
 router.get("/savedqueries", function(req, res) {
-    Query.findAll()
-    // Query.findOne({where: {id: req.params.id} })
+    Query.findOne({where: {id:"3" } }) //req.params.id
       .then(function(data){
         if (renderJSON) {
           res.json(data);
@@ -125,7 +136,7 @@ router.get('/editprofile', function(req, res) {
 router.post('/editprofile', function(req, res) {
    console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
     + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
-   res.render('dashboard'); 
+   res.render('editprofile'); 
 });
 
 
@@ -135,7 +146,7 @@ router.post('/editprofile', function(req, res) {
 
 
 router.get("/myskills", function(req, res) { //This should get their current skills according to logged in UserId
-    Geek.findOne({where: {UserId: req.params.id} })
+    Geek.findOne({where: {UserId:"3" } })//req.params.id
       .then(function(data){
         if (renderJSON) {
           res.json(data);
@@ -147,7 +158,8 @@ router.get("/myskills", function(req, res) { //This should get their current ski
 
 router.get('/editskills', function(req, res) {
         if (renderJSON) {
-          res.json(data);
+          // res.json(data);
+          res.render('/editskills');
         } else {
           res.render('myskills');
         }

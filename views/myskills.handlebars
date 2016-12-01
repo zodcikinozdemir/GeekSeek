@@ -10,6 +10,18 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
+            <li><a id="currentuser" href='/currentuser'>USER ID: 
+            <form method="POST" action="/currentuser" class="form-myskills">
+
+ {{#each users}}
+          <tr>
+              <td>{{id}}</td>
+              <td>{{username}}</td>
+              
+          </tr>
+        {{/each}}
+        </form></a></li>
+
         <li><a id="logout-link" href="/logout">Logout</a></li>
       </ul>
     </div>
@@ -46,7 +58,6 @@
           </tr>
         {{/each}}
         </form>
-         <button class="btn btn-lg btn-primary btn-block" href = '/editskills' type="save">Edit Skills?</button>
 
 </div>
 
@@ -56,6 +67,7 @@
 
 
     <form method="POST" action="/editskills" class="form-editskills">
+
     <h4><strong>HTML</strong></h4>
     <select class="chosen" name="q1">
       <option value=""></option>
@@ -113,5 +125,5 @@
     <form method="PUT" action="/geek/update/:id" class="form-updateskills">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   </form>
-</div>
+  </div>
 

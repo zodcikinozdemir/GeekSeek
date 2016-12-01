@@ -10,6 +10,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
+            <li><a id="currentuser" href="/currentuser">USER ID: </a></li>
+
         <li><a id="logout-link" href="/logout">Logout</a></li>
       </ul>
     </div>
@@ -88,10 +90,9 @@
 {{!-- Save Query--}}            
 
   <input type="queryName" id="queryName" name="queryName" class="form-control" placeholder="Give this Query a Name">
- <button class="btn btn-lg btn-primary btn-block" href = '/query/insert/:id' type="save">Save</button>
 <br>
 <!-- Submit Button -->
-  <button class="btn btn-lg btn-primary btn-block" href = '/null' type="submit">Submit</button>
+  <button class="btn btn-lg btn-primary btn-block" href = '/query/insert/:id' type="submit">Submit</button>
   </form>
 </div>
 </div>

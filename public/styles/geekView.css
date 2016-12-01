@@ -53,14 +53,22 @@ body {
     border-right: 1px solid #eee;
   }
 }
-/*.geek{}*/
+.geek{
+  z-index: 1000;
+  padding-bottom: 110%;
+  background-color: #ffb951;
+}
 .geek > .active > a,
 .geek > .active > a:hover,
 .geek > .active > a:focus {
   color: #fff;
   background-color: #ff9651;
 }
-/*.seek{}*/
+.seek{
+  z-index: 1000;
+  padding-bottom: 200%;
+  background-color: #5196ff;
+}
 .seek > .active > a,
 .seek > .active > a:hover,
 .seek > .active > a:focus {
@@ -76,6 +84,7 @@ body {
 .geek > li > a {
   padding-right: 20px;
   padding-left: 20px;
+
   background-color: #ffb951;
   color: #222;
 }

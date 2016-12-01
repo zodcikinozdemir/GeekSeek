@@ -66,7 +66,6 @@ router.get('/editprofile', function(req, res) {
         }
 });
 
-
 router.get("/profile/:id", function(req, res) {
     Geek.findOne({where: {id: req.params.id} })
       .then(function(data){
@@ -97,6 +96,7 @@ router.post('/editprofile', function(req, res) {
 });
 
 router.put('/geek/update/:id', function(req, res) {
+    console.log('updating geek id: ' + req.params.id);
     Geek.update({html: req.body.q1, 
                  css: req.body.q2,
                  javascript: req.body.q3,
@@ -114,7 +114,6 @@ router.delete('/geek/delete/:id', function (req, res) {
         res.redirect('/geeks');
     });
 });
-
 
 //AUTHENTICATED USER SIGN UP, LOGIN, LOGOUT
 var isAuthenticated = function (req, res, next) {

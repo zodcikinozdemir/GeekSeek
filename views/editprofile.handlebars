@@ -26,7 +26,8 @@
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     
-    <form action="/editprofile" method="POST" class="form-editprofile">
+    {{!-- <form action="/editprofile" method="POST" class="form-editprofile"> --}}
+    <form action="/geek/update/{{this.id}}?_method=PUT" method="POST">
 		<h4><strong>HTML</strong></h4>
 	 	<select class="chosen" name="q1">
 	 		<option value=""></option>
@@ -80,8 +81,8 @@
             <option value="5">5 (Strong)</option>
       	</select>
 
-            <!-- Submit Button -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit`</button>
+        <!-- Submit Button -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   </form>
 </div>
 </div>

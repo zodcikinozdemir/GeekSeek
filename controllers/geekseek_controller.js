@@ -88,7 +88,7 @@ router.get("/geek/find/:id", function(req, res) {
 });
 
 //This will update the skills in the Geek table based on the id passed
-router.put('/geek/update/:id', function(req, res) {
+router.post('/geek/update/:id', function(req, res) {
     console.log('updating geek id: ' + req.params.id);
     Geek.update({html: req.body.q1, 
                  css: req.body.q2,
@@ -97,7 +97,7 @@ router.put('/geek/update/:id', function(req, res) {
                  node: req.body.q5
                 },{where: {id: req.params.id}})
     .then(function(){
-        res.redirect('/profile');
+        //res.redirect('/editprofile');
     });
 });
 

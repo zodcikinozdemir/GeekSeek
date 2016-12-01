@@ -2,8 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     userType: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.ENUM('seeker', 'geek'),
     
   },
     username: {
@@ -18,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
   zipCode: {
     type: DataTypes.STRING,
 
-      allowNull: true,
+    allowNull: true,
 
   },
   password: {

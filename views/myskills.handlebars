@@ -4,6 +4,9 @@
  {{/section}}
 
 
+
+<div class="container">
+  <form method="POST" action="myskills" class="form-signin">
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -24,27 +27,53 @@
         <li class="active"><a href="/seekers">New Query </a></li>
         <li><a href="/seekers">Saved Queries<span class="sr-only">(current)</span> </a></li>
         <li><a href="/editprofile">Edit Profile</a></li>
-        <li><a href="/geek/find/:id">My Skills</a></li>
-
-      </ul>
+        <li><a href="/myskills">My Skills</a></li>
+           </ul>
     </div>
+
+  
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h2 class="sub-header">Seekers</h2>
+      <h2 class="sub-header">Section title</h2>
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Company Name</th>
+              <th>#</th>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
             </tr>
           </thead>
-        
-        {{#each seekers}}
-          <tr>
-             <td>{{companyName}}</td>
-          </tr>
-        {{/each}}
+          <tbody>
+            <tr>
+              <td>1,001</td>
+              <td>Lorem</td>
+              <td>ipsum</td>
+              <td>dolor</td>
+              <td>sit</td>
+            </tr>
+            <tr>
+              <td>1,002</td>
+              <td>amet</td>
+              <td>consectetur</td>
+              <td>adipiscing</td>
+              <td>elit</td>
+            </tr>
+            <tr>
+              <td>1,003</td>
+              <td>Integer</td>
+              <td>nec</td>
+              <td>odio</td>
+              <td>Praesent</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
-  </div>
+
+
+    </div>
+
+  </form>
 </div>

@@ -50,7 +50,18 @@ router.get('/logout', function(req, res) {
 });
 
 
-
+//This will return saved queries based on the id passed
+router.get("/query/find/:id", function(req, res) {
+    Query.findOne({where: {id: req.params.id} })
+      .then(function(data){
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          //res.render('editprofile', {geeks: data});
+          res.render('queries', {queries: data});
+        }
+    });
+});
 
 
 //This will return all of the information in the Geek table
@@ -72,12 +83,11 @@ router.get("/geek/find/:id", function(req, res) {
         if (renderJSON) {
           res.json(data);
         } else {
-          //res.render('editprofile', {geeks: data});
-          res.render('editprofile');
+          res.render('editprofile', {geeks: data});
         }
     });
 });
-
+// 
 //This will update the skills in the Geek table based on the id passed
 router.put('/geek/update/:id', function(req, res) {
     console.log('updating geek id: ' + req.params.id);
@@ -115,20 +125,22 @@ router.get("/seekers", function(req, res) {
 
 
 
-
-
-
 //This will return all of the information in the Skills table
-router.get("/skills", function(req, res) {
+router.get("/seekers", function(req, res) {
     Skill.findAll()
-    	.then(function(data){
+      .then(function(data){
         if (renderJSON) {
           res.json(data);
         } else {
-          //res.render('skills', {skills: data});          
+          res.render('seekers', {seekers: data});          
         }
     });
 });
+
+
+
+
+
 
 //This will return all of the information in the Users table
 router.get("/users", function(req, res) {
@@ -138,6 +150,18 @@ router.get("/users", function(req, res) {
           res.json(data);
         } else {
           //res.render('skills', {skills: data});          
+        }
+    });
+});
+
+//This will return all of the information in the Skills table
+router.get("/myskills", function(req, res) {
+    Geek.findOne({where: {id: req.params.id}})
+      .then(function(data){
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('myskills', {geeks: data});          
         }
     });
 });

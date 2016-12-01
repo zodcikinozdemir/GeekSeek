@@ -26,7 +26,7 @@ module.exports.signup = function(req, res) {
   var salt = bcrypt.genSaltSync(10)
   var hashedPassword = bcrypt.hashSync(password, salt)
   var newUser = {
-    userType: userType,
+    // userType: userType,
     username: username,
     salt: salt,
     password: hashedPassword,
@@ -34,11 +34,11 @@ module.exports.signup = function(req, res) {
   }
   
   User.create(newUser).then(function() {
-      if(userType=='seeker') {
+      // if(userType=='seeker') {
        res.redirect('/seekers')
-      } else {
-        res.redirect('/geeks');
-      }
+      // } else {
+      //   res.redirect('/geeks');
+      // }
   }).catch(function(error) {
     req.flash('error', "Please, choose a different username.")
     res.redirect('/signup')

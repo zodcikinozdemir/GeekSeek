@@ -1,10 +1,10 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
-    userType: {
-      type: DataTypes.ENUM('seeker', 'geek'),
+  //   userType: {
+  //     type: DataTypes.STRING,
     
-  },
+  // },
     username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         User.hasMany(models.Query);
         User.hasOne(models.Geek);
-        User.hasOne(models.Seeker);
+        // User.hasOne(models.Seeker);
         // User.belongsToMany(models.Query, {as: 'User_id', through: 'Queries'});
        }
     }

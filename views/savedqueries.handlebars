@@ -1,8 +1,7 @@
 {{#section 'head'}}
-     <link rel="stylesheet" href="/styles/geekView.css">
+     <link rel="stylesheet" href="/styles/seekView.css">
  
  {{/section}}
-
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -20,29 +19,25 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-       <li><a href="/seekers">New Query</a></li>
-        <li><a href="/savedqueries">Saved Queries </a></li>
+      <ul class="nav nav-sidebar">
+        <li><a href="/seekers">New Query </a></li>
+        <li class="active"><a href="/savedqueries">Saved Queries<span class="sr-only">(current)</span> </a></li>
         <li><a href="/editprofile">Edit Profile</a></li>
-        <li ><a href="/myskills">My Skills</a></li>
+        <li><a href="/myskills">My Skills</a></li>
 
       </ul>
     </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h2 class="sub-header">Geeks</h2>
-      <div class="table-responsive">
-       <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>HTML</th>
-              <th>CSS</th>
-              <th>JavaScript</th>
-              <th>MySQL</th>
-              <th>Node</th>
-            </tr>
-          </thead>
-          {{#each geeks}}
+    </div>
+    </div>
+
+    <div class="col-sm-5 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <form method="POST" action="/savedqueries" class="form-savedqueries">
+
+ {{#each queries}}
           <tr>
+              <td>{{id}}</td>
+              <td>{{queryName}}</td>
+
               <td>{{html}}</td>
               <td>{{css}}</td>
               <td>{{javascript}}</td>
@@ -50,8 +45,4 @@
               <td>{{node}}</td>
           </tr>
         {{/each}}
-        </table>
-      </div>
-    </div>
-  </div>
 </div>

@@ -10,7 +10,7 @@ module.exports.signup = function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
   var password2 = req.body.password2;
-  var userType = req.body.userType;
+  // var userType = req.body.userType;
   var zipCode = req.body.zipCode;
   
   if (!username || !password || !password2) {

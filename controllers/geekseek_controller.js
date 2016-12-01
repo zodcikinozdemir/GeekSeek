@@ -50,18 +50,7 @@ router.get('/logout', function(req, res) {
 });
 
 
-//This will return saved queries based on the id passed
-router.get("/query/find/:id", function(req, res) {
-    Query.findOne({where: {id: req.params.id} })
-      .then(function(data){
-        if (renderJSON) {
-          res.json(data);
-        } else {
-          //res.render('editprofile', {geeks: data});
-          res.render('queries', {queries: data});
-        }
-    });
-});
+
 
 
 //This will return all of the information in the Geek table
@@ -83,10 +72,12 @@ router.get("/geek/find/:id", function(req, res) {
         if (renderJSON) {
           res.json(data);
         } else {
-          res.render('editprofile', {geeks: data});
+          res.render('myskills', {geeks: data});
         }
     });
 });
+
+// 
 // 
 //This will update the skills in the Geek table based on the id passed
 router.put('/geek/update/:id', function(req, res) {
@@ -123,16 +114,16 @@ router.get("/seekers", function(req, res) {
     });
 });
 
-
-
-//This will return all of the information in the Skills table
-router.get("/seekers", function(req, res) {
-    Skill.findAll()
+//This will return saved queries based on the id passed
+router.get("/savedqueries", function(req, res) {
+    Query.findAll()
+    // Query.findOne({where: {id: req.params.id} })
       .then(function(data){
         if (renderJSON) {
           res.json(data);
         } else {
-          res.render('seekers', {seekers: data});          
+          //res.render('editprofile', {geeks: data});
+          res.render('savedqueries', {queries: data});
         }
     });
 });
@@ -142,29 +133,7 @@ router.get("/seekers", function(req, res) {
 
 
 
-//This will return all of the information in the Users table
-router.get("/users", function(req, res) {
-    User.findAll()
-      .then(function(data){
-        if (renderJSON) {
-          res.json(data);
-        } else {
-          //res.render('skills', {skills: data});          
-        }
-    });
-});
 
-//This will return all of the information in the Skills table
-router.get("/myskills", function(req, res) {
-    Geek.findOne({where: {id: req.params.id}})
-      .then(function(data){
-        if (renderJSON) {
-          res.json(data);
-        } else {
-          res.render('myskills', {geeks: data});          
-        }
-    });
-});
 
 //This will add a new record to the Skills table
 router.post('/skill/create', function(req, res) {
@@ -194,6 +163,49 @@ router.post('/editprofile', function(req, res) {
    res.render('dashboard'); 
 });
 
+router.get('/editskills', function(req, res) {
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('myskills');
+        }
+});
+
+router.post('/editskills', function(req, res) {
+   console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
+    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
+   res.render('myskills'); 
+});
+
+//This will return all of my skills
+router.get("/myskills", function(req, res) {
+    Geek.findOne({where: {UserId: '3'}})
+      .then(function(data){
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('myskills', {geeks: data});          
+        }
+    });
+
+});
+
+
+
+
 
 
 module.exports = router;
+
+
+//This will return all of the information in the Users table
+// router.get("/users", function(req, res) {
+//     User.findAll()
+//       .then(function(data){
+//         if (renderJSON) {
+//           res.json(data);
+//         } else {
+//           //res.render('skills', {skills: data});          
+//         }
+//     });
+// });

@@ -3,10 +3,6 @@
  
  {{/section}}
 
-
-
-<div class="container">
-  <form method="POST" action="myskills" class="form-signin">
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -24,58 +20,95 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <ul class="nav nav-sidebar">
-        <li class="active"><a href="/seekers">New Query </a></li>
-        <li><a href="/seekers">Saved Queries<span class="sr-only">(current)</span> </a></li>
+        <li><a href="/seekers">New Query </a></li>
+        <li><a href="/savedqueries">Saved Queries </a></li>
         <li><a href="/editprofile">Edit Profile</a></li>
-        <li><a href="/geek/find/:id">My Skills</a></li>
+        <li class="active"><a href="/myskills">My Skills<span class="sr-only">(current)</span></a></li>
 
       </ul>
     </div>
-
-  
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h2 class="sub-header">Section title</h2>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
-              <td>dolor</td>
-              <td>sit</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>adipiscing</td>
-              <td>elit</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>odio</td>
-              <td>Praesent</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    </div>
     </div>
 
+    <div class="col-sm-5 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-    </div>
+    <h4>display user's skills /geek/find/:id </h4>
+{{!--         <form method="POST" action="/geek/find/:id" class="form-myskills">
 
+ {{#each geeks}}
+          <tr>
+              <td>{{html}}</td>
+              <td>{{css}}</td>
+              <td>{{javascript}}</td>
+              <td>{{mysql}}</td>
+              <td>{{node}}</td>
+          </tr>
+        {{/each}}
+        </form> --}}
+</div>
+
+
+
+    <div class="col-sm-4 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+    <form method="POST" action="/editskills" class="form-editskills">
+    <h4><strong>HTML</strong></h4>
+    <select class="chosen" name="q1">
+      <option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+        </select>
+
+    <h4><strong>CSS</strong></h4>
+    <select class="chosen" name="q2">
+      <option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+        </select>
+
+
+    <h4><strong>Javascript</h4>
+    <select class="chosen" name="q3">
+      <option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+        </select>
+
+
+    <h4><strong>MySQL</h4>
+    <select class="chosen" name="q4">
+      <option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+        </select>
+
+
+    <h4><strong>Node</h4>
+    <select class="chosen" name="q5">
+      <option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+        </select>
+
+            <!-- Submit Button -->
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit`</button>
   </form>
+</div>
+</div>
 </div>

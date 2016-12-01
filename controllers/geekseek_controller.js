@@ -65,7 +65,7 @@ router.get('/dashboard', isAuthenticated, function(req, res) {
   res.render('dashboard');
 });
 
-router.post('/dashboard', function(req, res) {
+router.post('/dashboard', isAuthenticated, function(req, res) {
   
    res.render('dashboard'); 
 });
@@ -90,13 +90,41 @@ router.put('/query/insert/:id', function(req, res) {
     console.log('updating query for user: ' + req.params.id);
     Query.update({queryName: req.body.queryName, 
                  html: req.body.q1,
-                 css: req.body.q2,
+                 css: req.body.q2, //should be q2's value
                  javascript: req.body.q3,
                  mysql: req.body.q4,
                  node: req.body.q5
                 },{where: {UserId: req.params.id}})
     .then(function(){
         res.redirect('/savedqueries');
+    });
+});
+
+router.get('/results', function(req,res){ //query results
+  Geek.findAll({
+    where: {
+      html: {
+        gte: req.body.q1
+      },
+      css: {
+        gte: req.body.q2,
+      },
+      javascript: {
+        gte: req.body.q3
+      },
+      mysql: {
+        gte: req.body.q4
+      },
+      node: {
+        gte: req.body.q5
+      },
+    }
+  }).then(function(data){
+     if (renderJSON) {
+          res.json(data);
+        } else {
+        res.render('results', {geeks: data});
+}
     });
 });
 

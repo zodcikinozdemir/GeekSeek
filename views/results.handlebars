@@ -10,7 +10,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-                 <li><a id="currentuser" href="/currentuser">USER ID: </a></li>
+                 <li><a id="currentuser" href="/editprofile">USER ID: </a></li>
 
 
         <li><a id="logout-link" href="/logout">Logout</a></li>
@@ -23,20 +23,27 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li><a href="/newquery">New Query </a></li>
-        <li class="active"><a href="/savedqueries">Saved Queries<span class="sr-only">(current)</span> </a></li>
+        <li class="active"><a href="/newquery">New Query </a></li>
+        <li ><a href="/savedqueries">Saved Queries<span class="sr-only">(current)</span> </a></li>
         <li><a href="/editprofile">Edit Profile</a></li>
         <li class="activeG"><a href="/myskills">My Skills</a></li>
+        <li class="active"><a href="/results">Results<span class="sr-only">(current)</span></a></li>
+        <br>
+        <br><br><br><br><br><br><br>
+      <li><a id="currentuser" href="/currentuser">You are logged in as USER ID: </a></li>
 
       </ul>
     </div>
     </div>
     </div>
 
-    <div class="col-sm-5 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <form method="POST" action="/savedqueries" class="form-savedqueries">
 
- {{#each queries}}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h2 class="sub-header">Query Results</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+          {{#each queries}}
           <tr>
               <td>{{id}}</td>
               <td>{{queryName}}</td>
@@ -48,11 +55,6 @@
               <td>{{node}}</td>
           </tr>
         {{/each}}
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
             <tr>
               <th>#</th>
               <th>Header</th>
@@ -85,6 +87,3 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-</div>

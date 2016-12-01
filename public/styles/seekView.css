@@ -72,6 +72,14 @@ body {
   color: #fff;
   background-color: #51b9ff;
   
+  
+}
+.nav-sidebar > .activeG > a,
+.nav-sidebar > .activeG > a:hover,
+.nav-sidebar > .activeG > a:focus {
+  color: #fff;
+  background-color: #ff9651;
+  
 }
 
 

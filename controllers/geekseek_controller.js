@@ -15,7 +15,7 @@ if (config.renderJSON == "1") {
   renderJSON = true;
 }
 
-//AUTHENTICATED USER SIGN UP, LOGIN, LOGOUT
+/////LOGIN////
 var isAuthenticated = function (req, res, next) {
   if (req.isAuthenticated())
     return next();
@@ -27,9 +27,6 @@ router.get('/', function(req, res) {
   res.render('home');
 });
 
-router.get('/signup', signupController.show);
-router.post('/signup', signupController.signup);
-
 router.get('/login', function(req, res) {
   res.render('login');
 });
@@ -40,34 +37,96 @@ router.post('/login', passport.authenticate('local', {
     failureFlash: true 
 }));
 
-router.get('/dashboard', isAuthenticated, function(req, res) {
-  res.render('dashboard');
-});
+/////SIGNUP////
+router.get('/signup', signupController.show);
+router.post('/signup', signupController.signup);
 
+////LOGOUT///
 router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
 
+////////MAIN USER DASHBOARD/////////
 
+router.get('/dashboard', isAuthenticated, function(req, res) {
+  res.render('dashboard');
+});
 
+/////NEW QUERY//// For logged in user to create, submit, save their query, review results
+//This will insert the query in the Query table based on the id passed
+router.get('/newquery', function(req, res) {
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('newquery');
+        }
+});
 
+router.post('/newquery', function(req, res) {
+   console.log("selections : [ " + req.body.queryName + "-" + req.body.q1 +" - " + req.body.q2 +" - "
+    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
+   res.render('newquery'); 
+});
 
-//This will return all of the information in the Geek table
-router.get("/geeks", function(req, res) {
-    Geek.findAll()
+router.put('/query/insert/:id', function(req, res) {
+    console.log('updating query for user: ' + req.params.id);
+    Query.update({queryName: req.body.queryName, 
+                 html: req.body.q1.value,
+                 css: req.body.q2.value,
+                 javascript: req.body.q3.value,
+                 mysql: req.body.q4.value,
+                 node: req.body.q5.value
+                },{where: {UserId: req.params.id}})
+    .then(function(){
+        res.redirect('/savedqueries');
+    });
+});
+
+/////SAVED QUERIES//// For logged in user to view their saved queries by UserId
+//This will return saved queries based on the id passed
+router.get("/savedqueries", function(req, res) {
+    Query.findAll()
+    // Query.findOne({where: {id: req.params.id} })
       .then(function(data){
         if (renderJSON) {
           res.json(data);
         } else {
-          res.render('geeks', {geeks: data});          
+          //res.render('editprofile', {geeks: data});
+          res.render('savedqueries', {queries: data});
         }
     });
 });
 
-//This will return the information of a Geek based on the id passed
-router.get("/geek/find/:id", function(req, res) {
-    Geek.findOne({where: {id: req.params.id} })
+/////EDIT PROFILE//// For logged in user to edit their username(email), password, zipcode
+router.get("/user/find/:id", function(req, res) { //This will return the information of a User based on the id passed
+
+    User.findOne({where: {id: req.params.id} })
+      .then(function(data){
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('editprofile', {users: data});
+        }
+    });
+});
+router.get('/editprofile', function(req, res) {
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('editprofile');
+        }
+});
+router.post('/editprofile', function(req, res) {
+   console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
+    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
+   res.render('dashboard'); 
+});
+
+
+/////EDIT SKILLS//// For logged in user to add and update their skillset against the Geeks table by UserId
+router.get("/geek/find/:id", function(req, res) { //This should get their current skills according to logged in UserId
+    Geek.findOne({where: {UserId: req.params.id} })
       .then(function(data){
         if (renderJSON) {
           res.json(data);
@@ -77,8 +136,19 @@ router.get("/geek/find/:id", function(req, res) {
     });
 });
 
-// 
-// 
+router.get('/editskills', function(req, res) {
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('myskills');
+        }
+});
+router.post('/editskills', function(req, res) {
+   console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
+    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
+   res.render('myskills'); 
+});
+
 //This will update the skills in the Geek table based on the id passed
 router.put('/geek/update/:id', function(req, res) {
     console.log('updating geek id: ' + req.params.id);
@@ -101,39 +171,7 @@ router.delete('/geek/delete/:id', function (req, res) {
     });
 });
 
-
-//This will return all of the information in the Seeker table
-router.get("/seekers", function(req, res) {
-    Seeker.findAll()
-      .then(function(data){
-        if (renderJSON) {
-          res.json(data);
-        } else {
-          res.render('seekers', {seekers: data});          
-        }
-    });
-});
-
-//This will return saved queries based on the id passed
-router.get("/savedqueries", function(req, res) {
-    Query.findAll()
-    // Query.findOne({where: {id: req.params.id} })
-      .then(function(data){
-        if (renderJSON) {
-          res.json(data);
-        } else {
-          //res.render('editprofile', {geeks: data});
-          res.render('savedqueries', {queries: data});
-        }
-    });
-});
-
-
-
-
-
-
-
+/////////////MY SKILLS////////////////////////
 
 //This will add a new record to the Skills table
 router.post('/skill/create', function(req, res) {
@@ -147,39 +185,9 @@ router.post('/skill/create', function(req, res) {
     });
 });
 
-
-
-router.get('/editprofile', function(req, res) {
-        if (renderJSON) {
-          res.json(data);
-        } else {
-          res.render('editprofile');
-        }
-});
-
-router.post('/editprofile', function(req, res) {
-   console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
-    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
-   res.render('dashboard'); 
-});
-
-router.get('/editskills', function(req, res) {
-        if (renderJSON) {
-          res.json(data);
-        } else {
-          res.render('myskills');
-        }
-});
-
-router.post('/editskills', function(req, res) {
-   console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
-    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
-   res.render('myskills'); 
-});
-
 //This will return all of my skills
 router.get("/myskills", function(req, res) {
-    Geek.findOne({where: {UserId: '3'}})
+    Geek.findOne({where: {UserId: '3'}}) //need to collect logged in user's id
       .then(function(data){
         if (renderJSON) {
           res.json(data);
@@ -191,21 +199,19 @@ router.get("/myskills", function(req, res) {
 });
 
 
-
-
+/////OTHER///////
+//This will return all of the information in the Geek table
+router.get("/geeks", function(req, res) {
+    Geek.findAll()
+      .then(function(data){
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('geeks', {geeks: data});          
+        }
+    });
+});
 
 
 module.exports = router;
 
-
-//This will return all of the information in the Users table
-// router.get("/users", function(req, res) {
-//     User.findAll()
-//       .then(function(data){
-//         if (renderJSON) {
-//           res.json(data);
-//         } else {
-//           //res.render('skills', {skills: data});          
-//         }
-//     });
-// });

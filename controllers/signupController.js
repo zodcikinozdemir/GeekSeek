@@ -7,10 +7,11 @@ module.exports.show = function(req, res) {
 }
 
 module.exports.signup = function(req, res) {
-  var username = req.body.username
-  var password = req.body.password
-  var password2 = req.body.password2
-  var userType = req.body.usertype;
+  var username = req.body.username;
+  var password = req.body.password;
+  var password2 = req.body.password2;
+  var userType = req.body.userType;
+  var zipCode = req.body.zipCode;
   
   if (!username || !password || !password2) {
     req.flash('error', "Please, fill in all the fields.")
@@ -25,10 +26,11 @@ module.exports.signup = function(req, res) {
   var salt = bcrypt.genSaltSync(10)
   var hashedPassword = bcrypt.hashSync(password, salt)
   var newUser = {
-    usertype: userType,
+    userType: userType,
     username: username,
     salt: salt,
-    password: hashedPassword
+    password: hashedPassword,
+    zipCode: zipCode
   }
   
   User.create(newUser).then(function() {

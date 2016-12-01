@@ -67,7 +67,7 @@ router.post('/skill/create', function(req, res) {
     Skill.create({skillName: req.body.skillName})
     .then(function() {
         if (renderJSON) {
-          res.json(data);
+          console.log('skill ' + req.body.skillName + ' added.');
         } else {
           res.redirect('/skills');
         }
@@ -75,7 +75,7 @@ router.post('/skill/create', function(req, res) {
 });
 
 //This will return the information of a Geek based on the id passed
-router.get("/profile/:id", function(req, res) {
+router.get("/geek/find/:id", function(req, res) {
     Geek.findOne({where: {id: req.params.id} })
       .then(function(data){
         if (renderJSON) {
@@ -103,7 +103,7 @@ router.put('/geek/update/:id', function(req, res) {
 
 //this will delete a Geek record based on the id passed
 router.delete('/geek/delete/:id', function (req, res) {
-    Geek.delete({where: {id: req.params.id}})
+    Geek.destroy({where: {id: req.params.id}})
     .then(function(){
         res.redirect('/geeks');
     });

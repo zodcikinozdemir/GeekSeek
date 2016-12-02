@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Query = sequelize.define('Query', {
+    
     queryName: { 
       allowNull: false,
       type: DataTypes.STRING
@@ -33,13 +34,12 @@ module.exports = function(sequelize, DataTypes) {
   
   }, {
     timestamps: false,
-    // createdAt: false,  // I don't want createdAt
     paranoid: true,
 
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-         // Query.belongsTo(models.User);
+         Query.belongsTo(models.User, {foreignKey: 'UserId'});
 
          // Query.belongsToMany(models.Seeker, {through: 'Seekers'});     
        }

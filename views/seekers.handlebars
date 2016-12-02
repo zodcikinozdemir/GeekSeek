@@ -5,6 +5,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
+              <li><a id="currentuser" href="/currentuser">USER ID: </a></li>
+
         <li><a id="logout-link" href="/logout">Logout</a></li>
       </ul>
     </div>
@@ -15,27 +17,25 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li class="active"><a href="/geeks">New Query </a></li>
-        <li><a href="/geeks">Saves Queries<span class="sr-only">(current)</span> </a></li>
+        <ul class="nav nav-sidebar">
+
+        <li><a href="/newquery">New Query</a></li>
+        <li><a href="/savedqueries">Saved Queries </a></li>
         <li><a href="/editprofile">Edit Profile</a></li>
+        <li class="activeG"><a href="/myskills">My Skills</a></li>
+
+
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h2 class="sub-header">Seekers</h2>
+      <h2 class="sub-header">Section title</h2>
       <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Company Name</th>
-            </tr>
-          </thead>
-        
-        {{#each seekers}}
-          <tr>
-             <td>{{companyName}}</td>
-          </tr>
-        {{/each}}
-        </table>
+        <h2 class="sub-header">Welcome!</h2>
+      <div class="table-responsive">
+        <p>This application is a candidate screening service connecting Seekers(recruiters) with Geeks(candidates, or students) using a skill ranking system allowing the Seeker to review the best Geeks who meet their technical skill requirements, without knowing their name, or other personal contact information. Candidates are selected solely based on their skills.</p>
+
+        <h3>HOW IT WORKS</H3>
+        <p>Click on the menu links in the side nav bar to get around</p>
       </div>
     </div>
   </div>

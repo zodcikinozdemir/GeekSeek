@@ -1,0 +1,176 @@
+{{#section 'head'}}
+     <link rel="stylesheet" href="/styles/seekView.css">
+ 
+ {{/section}}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/dashboard">GeekSeek</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+            <li><a id="currentuser" href="/currentuser">USER ID: </a></li>
+
+        <li><a id="logout-link" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/newquery">New Query <span class="sr-only">(current)</span></a></li>
+        <li><a href="/savedqueries">Saved Queries </a></li>
+        <li ><a href="/editprofile">Edit Profile</a></li>
+        <li class="activeG"><a href="/myskills">My Skills</a></li>
+
+      </ul>
+  </div>
+
+<div class = "container">
+
+{{!-- choose rankings on skills --}}
+  <div class="col-sm-9 col-sm-offset-3 col-md-14 col-md-offset-2 main">
+    <form method="POST" action="/newquery" class="form-newquery">
+  <div class="col-sm-2">
+      <h4><strong>HTML</strong></h4>
+
+	 	<select class="chosen" name="q1">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+      </div>
+  
+
+  <div class="col-sm-2">
+    <h4><strong>CSS</strong></h4>
+
+		<select class="chosen" name="q2">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+</div>
+
+<div class="col-sm-2">
+
+		<h4><strong>Javascript</h4>
+	 	<select class="chosen" name="q3">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+</div>
+      <div class="col-sm-2">
+
+		<h4><strong>MySQL</h4>
+	 	<select class="chosen" name="q4">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+</div>
+<div class="col-sm-2">
+	<h4><strong>Node</h4>
+	 	<select class="chosen" name="q5">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+</div>
+<br>
+
+<br>
+<br>
+<br>
+{{!-- Save Queryname--}}            
+  <input type="queryName" id="queryName" name="queryName" class="form-control" placeholder="Give this Query a Name">
+<br>
+<!-- Submit Button -->
+  <button class="btn btn-lg btn-primary btn-block" href = '/query/insert/:id' type="submit">Submit</button>
+  
+
+</div>
+{{!-- Show results of Query
+ --}}
+ <div class = "row">
+ <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h2 class="sub-header">Query Results</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+          {{#each queries}}
+          <tr>
+              <td>{{id}}</td>
+              <td>{{queryName}}</td>
+
+              <td>{{html}}</td>
+              <td>{{css}}</td>
+              <td>{{javascript}}</td>
+              <td>{{mysql}}</td>
+              <td>{{node}}</td>
+          </tr>
+        {{/each}}
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,001</td>
+              <td>Lorem</td>
+              <td>ipsum</td>
+              <td>dolor</td>
+              <td>sit</td>
+            </tr>
+            <tr>
+              <td>1,002</td>
+              <td>amet</td>
+              <td>consectetur</td>
+              <td>adipiscing</td>
+              <td>elit</td>
+            </tr>
+            <tr>
+              <td>1,003</td>
+              <td>Integer</td>
+              <td>nec</td>
+              <td>odio</td>
+              <td>Praesent</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    </div>
+
+  </div>

@@ -10,7 +10,17 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a id="currentuser" href="/currentuser">USER ID: </a></li>
+            <li><a id="currentuser" href='/currentuser'>USER ID: 
+            <form method="POST" action="/currentuser" class="form-myskills">
+
+ {{#each users}}
+          <tr>
+              <td>{{id}}</td>
+              <td>{{username}}</td>
+              
+          </tr>
+        {{/each}}
+        </form></a></li>
 
         <li><a id="logout-link" href="/logout">Logout</a></li>
       </ul>
@@ -22,19 +32,42 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li ><a href="/newquery">New Query </a></li>
+        <li><a href="/newquery">New Query </a></li>
         <li><a href="/savedqueries">Saved Queries </a></li>
-        <li class="active"><a href="/editprofile">Edit Profile<span class="sr-only">(current)</span></a></li>
-        <li class="activeG"><a href="/myskills">My Skills</a></li>
+        <li><a href="/editprofile">Edit Profile</a></li>
+        <li class="activeG"><a href="/myskills">My Skills<span class="sr-only">(current)</span></a></li>
 
       </ul>
     </div>
+    </div>
+    </div>
+
+    <div class="col-sm-5 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    
-    {{!-- <form action="/editprofile" method="POST" class="form-editprofile"> --}}
-    <form action="/geek/update/{{this.id}}?_method=PUT" method="POST">
+{{!--     <h4>display user's skills /geek/find/:id </h4>
+ --}}        <form method="POST" action="/myskills" class="form-myskills">
+
+ {{#each geeks}}
+          <tr>
+              <td>{{html}}</td>
+              <td>{{css}}</td>
+              <td>{{javascript}}</td>
+              <td>{{mysql}}</td>
+              <td>{{node}}</td>
+          </tr>
+        {{/each}}
+        </form>
+
+</div>
+
+
+
+    <div class="col-sm-4 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+    <form method="POST" action="/editskills" class="form-editskills">
+
     <h4><strong>HTML</strong></h4>
     <select class="chosen" name="q1">
       <option value=""></option>
@@ -88,9 +121,9 @@
             <option value="5">5 (Strong)</option>
         </select>
 
-        <!-- Submit Button -->
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            <!-- Submit Button -->
+    <form method="PUT" action="/geek/update/:id" class="form-updateskills">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   </form>
-</div>
-</div>
-</div>
+  </div>
+

@@ -1,0 +1,99 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/newquery">New Query <span class="sr-only">(current)</span></a></li>
+        <li><a href="/savedqueries">Saved Queries </a></li>
+        <li ><a href="/editprofile">Edit Profile</a></li>
+        <li><a href="/myskills">My Skills</a></li>
+
+      </ul>
+  </div>
+
+{{!-- choose rankings on skills --}}
+  <div class="col-sm-4 col-sm-offset-3 col-md-14 col-md-offset-2 main">
+    <form method="POST" action="/newquery" class="form-newquery">
+		<h4><strong>HTML</strong></h4>
+	 	<select class="chosen" name="q1">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+
+		<h4><strong>CSS</strong></h4>
+		<select class="chosen" name="q2">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+
+
+		<h4><strong>Javascript</h4>
+	 	<select class="chosen" name="q3">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+
+
+		<h4><strong>MySQL</h4>
+	 	<select class="chosen" name="q4">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+
+
+		<h4><strong>Node</h4>
+	 	<select class="chosen" name="q5">
+	 		<option value=""></option>
+            <option value="1">1 (Weak)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strong)</option>
+      	</select>
+<br>
+<br>
+{{!-- Save Queryname--}}            
+  <input type="queryName" id="queryName" name="queryName" class="form-control" placeholder="Give this Query a Name">
+<br>
+<!-- Submit Button -->
+  <button class="btn btn-lg btn-primary btn-block" href = '/query/insert/:id' type="submit">Submit</button>
+  </form>
+
+
+
+{{!-- Show results of Query
+ --}}<div class="col-sm-5 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h2 class="sub-header">Query Results</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+          {{#each queries}}
+          <tr>
+              <td>{{id}}</td>
+              <td>{{queryName}}</td>
+
+              <td>{{html}}</td>
+              <td>{{css}}</td>
+              <td>{{javascript}}</td>
+              <td>{{mysql}}</td>
+              <td>{{node}}</td>
+          </tr>
+        {{/each}}
+    </div>
+</div>
+</div>

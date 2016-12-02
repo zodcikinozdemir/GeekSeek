@@ -1,7 +1,12 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Geek = sequelize.define('Geek', {
+    geekid: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
     
+  },
     html: {
       type: DataTypes.INTEGER,
       allowNull: true
@@ -39,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Geek.belongsTo(models.User);
+        Geek.belongsTo(models.User, {foreignKey: 'UserId'});
         // Geek.hasOne(models.User);
      }
     }

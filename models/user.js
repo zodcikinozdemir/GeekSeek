@@ -1,9 +1,10 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
-    userType: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
     
   },
     username: {
@@ -16,9 +17,9 @@ module.exports = function(sequelize, DataTypes) {
   },
  
   zipCode: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
 
-      allowNull: true,
+    allowNull: true,
 
   },
   password: {
@@ -26,16 +27,17 @@ module.exports = function(sequelize, DataTypes) {
   },
   salt: {
     type: DataTypes.STRING
-  },
-
-  }, {
+  }, 
+  
+},
+{
     paranoid: true,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        User.hasMany(models.Query);
-        User.hasOne(models.Geek);
-        User.hasOne(models.Seeker);
+        User.hasMany(models.Query, {foreignKey: 'UserId'});
+        User.hasOne(models.Geek, {foreignKey: 'UserId'});
+        // User.hasOne(models.Seeker);
         // User.belongsToMany(models.Query, {as: 'User_id', through: 'Queries'});
        }
     }

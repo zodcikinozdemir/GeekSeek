@@ -1,61 +1,84 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/dashboard">GeekSeek</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-              {{!-- <li><a id="signup-link" href="/signup">Sign Up</a></li> --}}
 
-{{!--               <li><a id="login-link" href="/login">Login</a></li>
- --}}              {{!-- <form method="POST" action="/login" class="form-signin">
-    <h2 class="form-inline">Please log in</h2>
+<nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="/">GeekSeek</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left form-signin" method = "POST" action="/login">
+                        <div class="form-group">
+                           {{#if errorMessage}}
+                            <div class="alert alert-danger">
+                              {{errorMessage}}
+                            </div>
+                          {{/if}}
+                          <input type="email" class="form-control" id="inputUsername SignInEmail" aria-describedby="emailSignIn" placeholder="Username">
+                          <input type="password" class="form-control" id="signInPassword" aria-describedby="passwordSignIn" placeholder="Password">
+                        </div>
+                        <button class="btn btn-outline page-scroll" id="login" type = "submit">Login</button>
+                    </form>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class = "container-fluid">
+<div class="row">
+
+{{!-- ///ABOUT//
+ --}}     
+  <div class="col-md-5">
+        <h2 class="sub-header">GEEKSEEK</h2>
+        <div class="table-responsive">
+          <h2 class="sub-header">Welcome!</h2>
+          <div class="table-responsive">
+          <p>This application is a candidate screening service connecting Seekers(recruiters) with Geeks(candidates, or students) using a skill ranking system allowing the Seeker to review the best Geeks who meet their technical skill requirements, without knowing their name, or other personal contact information. Candidates are selected solely based on their skills.</p>
+
+          <h3>HOW IT WORKS</H3>
+          <p>Click on the menu links in the side nav bar to get around</p>
+        </div>
+     </div>
+   </div>
+      <div class="col-md-1">
+</div>
+
+{{!-- //SIGN UP --}}
+     <div class="col-md-6">
+            <form method="POST" action="/signup" class="form-signin">
+      <h2 class="form-signin-heading">Create an account</h2>
+      
+      {{#if errorMessage}}
+        <div class="alert alert-danger">
+          {{errorMessage}}
+        </div>
+      {{/if}}
+      {{!-- <input type="radio" name="usertype" value="seeker" checked> Seeker</input>
+      <input type="radio" name="usertype" value="geek">Geek</input> --}}
+
+      <label for="inputUsername" class="sr-only">Username</label>
+      <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+      <label for="inputPassword" class="sr-only">Repeat Password</label>
+      <input type="password" id="inputPassword2" name="password2" class="form-control" placeholder="Repeat Password" required>
+      <label for="inputzipCode" name = "zipCode" class="sr-only">Zip Code</label>
+  <input type="zipCode" id="inputZipCode" name="zipCode" class="form-control" placeholder="ex. 08854" required>
+     
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+      </div>
     
-    {{#if errorMessage}}
-      <div class="alert alert-danger">
-        {{errorMessage}}
-      </div>
-    {{/if}}
-    <label for="inputUsername" class="sr-only">Username</label>
-    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-  </form> --}}
 
-  <form method="POST" action="/login" class="form-inline">
-    {{#if errorMessage}}
-      <div class="alert alert-danger">
-        {{errorMessage}}
-      </div>
-    {{/if}}
-
-  <div class="form-group">
-    <label for="inputusername">Username</label>
-    <input type="text" class="form-control" id="inputUsername" name = 'username' placeholder="Jane@email.com">
-  </div>
-  <div class="form-group">
-    <label for="inputPassword">Password</label>
-    <input type="text" class="form-control" id="inputPassword" placeholder="*********">
-  </div>
-  <button type="submit" class="btn btn-default">Login</button>
-</form>
-
-      </ul>
     </div>
   </div>
-</nav>
-
-
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h2 class="sub-header">GEEKSEEK</h2>
-      <div class="table-responsive">
-        <h2 class="sub-header">Welcome!</h2>
-      <div class="table-responsive">
-        <p>This application is a candidate screening service connecting Seekers(recruiters) with Geeks(candidates, or students) using a skill ranking system allowing the Seeker to review the best Geeks who meet their technical skill requirements, without knowing their name, or other personal contact information. Candidates are selected solely based on their skills.</p>
-
-        <h3>HOW IT WORKS</H3>
-        <p>Click on the menu links in the side nav bar to get around</p>
-      </div>
-    </div>
   </div>

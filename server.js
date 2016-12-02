@@ -6,8 +6,10 @@ var setupPassport = require('./setupPassport'),
     session = require('express-session'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser');
-
-var initdb = require("./db/initialize_db.js");
+var routes = require('./controllers/geekseek_controller.js');
+var methodOverride = require('method-override');
+var bodyParser = require('body-parser');
+// var initdb = require("./db/initialize_db.js");
 
 app.use(cookieParser())
 app.use(session({ secret: '4564f6s4fdsfdfd', resave: false, saveUninitialized: false }))
@@ -23,9 +25,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var routes = require('./controllers/geekseek_controller.js');
-var methodOverride = require('method-override');
-var bodyParser = require('body-parser');
+
 
 
 app.use(express.static(process.cwd() + '/public'));

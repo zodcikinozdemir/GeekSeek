@@ -30,7 +30,11 @@ router.get('/', function(req, res) {
 router.get('/login', function(req, res) {
   res.render('login');
 });
-
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/newquery',
+    failureRedirect: '/login',
+    failureFlash: true  
+}));
 router.get('/currentuser', function (req, res){
     User.findOne({where: {id: req.params.id} })
       .then(function(data){
@@ -43,11 +47,7 @@ router.get('/currentuser', function (req, res){
 });
 
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true 
-}));
+
 
 /////SIGNUP////
 router.get('/signup', signupController.show);
@@ -65,7 +65,7 @@ router.get('/dashboard', isAuthenticated, function(req, res) {
   res.render('dashboard');
 });
 
-router.post('/dashboard', isAuthenticated, function(req, res) {
+router.post('/dashboard', function(req, res) {
   
    res.render('dashboard'); 
 });

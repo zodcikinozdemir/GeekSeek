@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
@@ -249,9 +245,4 @@ router.post('/skill/create', function(req, res) {
     });
 });
 
-<<<<<<< HEAD
 module.exports = router;
-
-=======
-module.exports = router;
->>>>>>> master

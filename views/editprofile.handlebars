@@ -21,17 +21,22 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
+      <ul class="nav nav-sidebar seek">
+      
         <li ><a href="/newquery">New Query </a></li>
         <li><a href="/savedqueries">Saved Queries </a></li>
         <li class="active"><a href="/editprofile">Edit Profile<span class="sr-only">(current)</span></a></li>
-        <li class="activeG"><a href="/myskills">My Skills</a></li>
-
+        </ul>
+        <ul class="nav nav-sidebar geek">
+        <li ><a href="/myskills">My Skills</a></li>
+        
       </ul>
     </div>
 
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class= 'row'>
+    <div class="col-sm-4 col-md-5 main">
     <form method="POST" action="/editprofile" class="form-editprofile">
 		<h4><strong>HTML</strong></h4>
 	 	<select class="chosen" name="q1">
@@ -85,10 +90,14 @@
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
       	</select>
-
+        
             <!-- Submit Button -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit`</button>
+            <button id="profile_button" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   </form>
+</div>
+<div class="col-sm-8 col-md-7 edittext">
+  <h1> Got better at a New skill? <br> Or maybe things are different? <br> Edit your skills here!</h1>
+</div>
 </div>
 </div>
 </div>

@@ -17,7 +17,7 @@ if (config.renderJSON == "1") {
 //This will return all of the information in the Geek table
 router.get("/geeks", function(req, res) {
     Geek.findAll()
-    	.then(function(data){
+      .then(function(data){
         if (renderJSON) {
           res.json(data);
         } else {
@@ -29,7 +29,7 @@ router.get("/geeks", function(req, res) {
 //This will return all of the information in the Seeker table
 router.get("/seekers", function(req, res) {
     Seeker.findAll()
-    	.then(function(data){
+      .then(function(data){
         if (renderJSON) {
           res.json(data);
         } else {
@@ -41,7 +41,7 @@ router.get("/seekers", function(req, res) {
 //This will return all of the information in the Skills table
 router.get("/skills", function(req, res) {
     Skill.findAll()
-    	.then(function(data){
+      .then(function(data){
         if (renderJSON) {
           res.json(data);
         } else {
@@ -88,7 +88,7 @@ router.get("/geek/find/:id", function(req, res) {
 });
 
 //This will update the skills in the Geek table based on the id passed
-router.post('/geek/update/:id', function(req, res) {
+router.put('/geek/update/:id', function(req, res) {
     console.log('updating geek id: ' + req.params.id);
     Geek.update({html: req.body.q1, 
                  css: req.body.q2,
@@ -97,7 +97,7 @@ router.post('/geek/update/:id', function(req, res) {
                  node: req.body.q5
                 },{where: {id: req.params.id}})
     .then(function(){
-        //res.redirect('/editprofile');
+        res.redirect('/profile');
     });
 });
 

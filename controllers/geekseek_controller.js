@@ -11,6 +11,8 @@ var env = process.env.NODE_ENV || 'development';
 var config = require(__dirname + '/../config/config.json')[env];
 var renderJSON = false;
 
+var userID;
+
 if (config.renderJSON == "1") {
   renderJSON = true;
 }
@@ -73,9 +75,15 @@ router.post('/dashboard', function(req, res) {
 
 /////NEW QUERY//// For logged in user to create, submit, save their query, review results
 //This will insert the query in the Query table based on the id passed
-router.get('/newquery', function(req, res) {
-        
-          res.render('newquery');
+router.get('/newquery/:username', function(req, res) {
+    User.findOne({where: {username: req.params.username} })
+      .then(function(data){
+        console.log(data.id); 
+        Query.findAll({where: {UserId: data.id} })
+          .then(function(data){
+            res.render('newquery', {queries: data});
+        });
+    });
         
 });
 

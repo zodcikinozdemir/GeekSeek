@@ -9,7 +9,7 @@ var setupPassport = require('./setupPassport'),
 var routes = require('./controllers/geekseek_controller.js');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
-// var initdb = require("./db/initialize_db.js");
+var initdb = require("./db/initialize_db.js");
 
 app.use(cookieParser())
 app.use(session({ secret: '4564f6s4fdsfdfd', resave: false, saveUninitialized: false }))

@@ -1,4 +1,5 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
       padding-top: 50px;
 /*      background-image: url("../background.gif");
@@ -6,4 +7,11 @@ body {
       background-repeat: no-repeat;
       background-attachment:fixed;
       background-size: cover;
+      background-image: url(https://www.skotcher.com/wall/f2f11b3f321a31812941300e1d039dd3/blue-coding-programming.jpg);
+      text-shadow: 2px 1px black;
 }
+a {color:white;}
+h1,h2,h3 {color:white;}
+p {color:white;}
+.row {
+    padding-top: 50px;

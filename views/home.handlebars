@@ -1,13 +1,10 @@
-<body background="http://www.hdwallpaperup.com/wp-content/uploads/2014/11/technology-programming-code-wallpaper-hd-2560x1024.jpg">
-<style>
-a {color:white;}
-h1,h2,h3 {color:white;}
-p {color:white;}
-.row {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-</style>
+{{#section 'head'}}
+<link rel="stylesheet" href="/styles/home.css"
+{{/section}}
+
+
+
+
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
@@ -22,7 +19,10 @@ p {color:white;}
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <form class="navbar-form navbar-left" action="/signIn">
+                    
+                    <!-- login -->
+
+                    <form class="navbar-form navbar-left" method="POST" action="/login">
                         <div class="form-group">
                           <input type="email" class="form-control" id="SignInEmail" aria-describedby="emailSignIn" placeholder="Email">
                           <input type="password" class="form-control" id="signInPassword" aria-describedby="passwordSignIn" placeholder="Password">

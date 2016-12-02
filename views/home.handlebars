@@ -25,44 +25,54 @@
         <!-- /.container-fluid -->
     </nav>
 
+<div class = "container-fluid">
+<div class="row">
 
-    <div class="container">
-    <div class="row">
-    <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-2 main">
-      <h2 class="sub-header">GEEKSEEK</h2>
-      <div class="table-responsive">
-        <h2 class="sub-header">Welcome!</h2>
-      <div class="table-responsive">
-        <p>This application is a candidate screening service connecting Seekers(recruiters) with Geeks(candidates, or students) using a skill ranking system allowing the Seeker to review the best Geeks who meet their technical skill requirements, without knowing their name, or other personal contact information. Candidates are selected solely based on their skills.</p>
+{{!-- ///ABOUT//
+ --}}	    
+ 	<div class="col-md-5">
+	      <h2 class="sub-header">GEEKSEEK</h2>
+	      <div class="table-responsive">
+	        <h2 class="sub-header">Welcome!</h2>
+	      	<div class="table-responsive">
+	        <p>This application is a candidate screening service connecting Seekers(recruiters) with Geeks(candidates, or students) using a skill ranking system allowing the Seeker to review the best Geeks who meet their technical skill requirements, without knowing their name, or other personal contact information. Candidates are selected solely based on their skills.</p>
 
-        <h3>HOW IT WORKS</H3>
-        <p>Click on the menu links in the side nav bar to get around</p>
-      </div>
-      <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-2 main">
+	        <h3>HOW IT WORKS</H3>
+	        <p>Click on the menu links in the side nav bar to get around</p>
+	      </div>
+	 	 </div>
+ 	 </div>
+ 	    <div class="col-md-1">
+</div>
+
+{{!-- //SIGN UP --}}
+     <div class="col-md-6">
             <form method="POST" action="/signup" class="form-signin">
-    <h2 class="form-signin-heading">Create an account</h2>
-    
-    {{#if errorMessage}}
-      <div class="alert alert-danger">
-        {{errorMessage}}
-      </div>
-    {{/if}}
-    {{!-- <input type="radio" name="usertype" value="seeker" checked> Seeker</input>
-    <input type="radio" name="usertype" value="geek">Geek</input> --}}
+	    <h2 class="form-signin-heading">Create an account</h2>
+	    
+	    {{#if errorMessage}}
+	      <div class="alert alert-danger">
+	        {{errorMessage}}
+	      </div>
+	    {{/if}}
+	    {{!-- <input type="radio" name="usertype" value="seeker" checked> Seeker</input>
+	    <input type="radio" name="usertype" value="geek">Geek</input> --}}
 
-    <label for="inputUsername" class="sr-only">Username</label>
-    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-    <label for="inputPassword" class="sr-only">Repeat Password</label>
-    <input type="password" id="inputPassword2" name="password2" class="form-control" placeholder="Repeat Password" required>
-    <label for="inputzipCode" name = "zipCode" class="sr-only">Zip Code</label>
-<input type="zipCode" id="inputZipCode" name="zipCode" class="form-control" placeholder="ex. 08854" required>
-   
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-  </form>
+	    <label for="inputUsername" class="sr-only">Username</label>
+	    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+	    <label for="inputPassword" class="sr-only">Password</label>
+	    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+	    <label for="inputPassword" class="sr-only">Repeat Password</label>
+	    <input type="password" id="inputPassword2" name="password2" class="form-control" placeholder="Repeat Password" required>
+	    <label for="inputzipCode" name = "zipCode" class="sr-only">Zip Code</label>
+	<input type="zipCode" id="inputZipCode" name="zipCode" class="form-control" placeholder="ex. 08854" required>
+	   
+	    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+	  </form>
       </div>
+    
+
     </div>
   </div>
   </div>
-  </div>
+ 

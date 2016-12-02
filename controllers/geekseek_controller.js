@@ -153,11 +153,11 @@ router.get("/user/find/:id", function(req, res) { //This will return the informa
         }
     });
 });
-router.get('/editprofile', function(req, res) {
+router.get('/editprofile/:id', function(req, res) {
         if (renderJSON) {
           res.json(data);
         } else {
-          res.render('editprofile');
+          res.render('editprofile', {id:req.params.id});
         }
 });
 

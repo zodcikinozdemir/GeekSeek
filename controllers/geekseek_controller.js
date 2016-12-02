@@ -44,8 +44,8 @@ router.get('/currentuser', function (req, res){
 
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
+    successRedirect: '/seekers',
+    failureRedirect: '/',
     failureFlash: true 
 }));
 
@@ -61,13 +61,13 @@ router.get('/logout', function(req, res) {
 
 ////////MAIN USER DASHBOARD/////////
 
-router.get('/dashboard', isAuthenticated, function(req, res) {
-  res.render('dashboard');
+router.get('/seekers', isAuthenticated, function(req, res) {
+  res.render('seekers');
 });
 
-router.post('/dashboard', isAuthenticated, function(req, res) {
+router.post('/seekers', isAuthenticated, function(req, res) {
   
-   res.render('dashboard'); 
+   res.render('seekers'); 
 });
 
 /////NEW QUERY//// For logged in user to create, submit, save their query, review results

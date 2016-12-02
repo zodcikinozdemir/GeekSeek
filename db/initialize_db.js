@@ -19,7 +19,8 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 .then(function(){
 	return models.User.create(
 	{
-		userType: "Seeker",
+		// userType: "Seeker",
+		id:"1",
 		username: "jane@email.com",
 		zipCode: "12345",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
@@ -30,61 +31,62 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 .then(function(){
 	return models.User.create(
 	{
-		userType: "Seeker",
+		// userType: "Seeker",
+		id:"2",
 		username: "john@email.com",
 		zipCode: "12345",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
 	return models.User.create(
 	{
-		userType: "Geek",
+		id:"3",
 		username: "sd@email.com",
 		zipCode: "08854",
-		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+			password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
+      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
 	return models.User.create(
 	{
-		userType: "Geek",
+		id:"4",
 		username: "mikeamon21@gmail.com",
 		zipCode: "12345",
-		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+			password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
+      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
 	return models.User.create(
 	{
-		userType: "Geek",
+		id:"5",
 		username: "rcjogee@gmail.com",
 		zipCode: "12345",
 		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
 	return models.User.create(
 	{
-		userType: "Geek",
-		username: "odcikin@msn.com",
+	id:"6",		
+	username: "odcikin@msn.com",
 		zipCode: "12345",
-		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+			password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
+      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 .then(function(){
 	return models.User.create(
 	{
-		userType: "Geek",
-		username: "gudiaz@msn.com",
+id:"7",		
+username: "gudiaz@msn.com",
 		zipCode: "07059",
-		password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
-      	salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
+			password: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O9D93HKwPKFNWBqiiuc/IoMtIurRCT36',
+      salt: '$2a$10$QaT1MdQ2DRWuvIxtNQ1i5O'
 	});
 })
 
@@ -94,12 +96,53 @@ conn.query('SET FOREIGN_KEY_CHECKS = 0')
 .then(function(){
 	return models.Query.create(
 	{
+
 		queryName: "Looking For a Geek",
 		html: "2",
 		css:"3",
 		javascript:"4",
 		mysql:"5",
 		node:"5",
+		UserId: "3",
+	});
+})
+.then(function(){
+	return models.Query.create(
+	{
+
+		queryName: "Where are You?",
+		html: "3",
+		css:"3",
+		javascript:"3",
+		mysql:"3",
+		node:"3",
+		UserId: "3",
+	});
+})
+.then(function(){
+	return models.Query.create(
+	{
+
+		queryName: "Project Collab",
+		html: "3",
+		css:"3",
+		javascript:"4",
+		mysql:"4",
+		node:"5",
+		UserId: "7",
+	});
+})
+.then(function(){
+	return models.Query.create(
+	{
+
+		queryName: "my search",
+		html: "2",
+		css:"3",
+		javascript:"4",
+		mysql:"5",
+		node:"5",
+		UserId: "7",
 	});
 })
 // =======================================================================

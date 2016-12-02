@@ -32,6 +32,7 @@ router.get('/', function(req, res) {
 router.get('/login', function(req, res) {
   res.render('login');
 });
+
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/newquery',
     failureRedirect: '/login',
@@ -62,28 +63,17 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-////////MAIN USER DASHBOARD/////////
 
-router.get('/dashboard', isAuthenticated, function(req, res) {
-  res.render('dashboard');
-});
-
-router.post('/dashboard', function(req, res) {
-  
-   res.render('dashboard'); 
-});
-
-/////NEW QUERY//// For logged in user to create, submit, save their query, review results
-//This will insert the query in the Query table based on the id passed
-router.get('/newquery/:username', function(req, res) {
+router.get('/seeker/:username', function(req, res) {
     User.findOne({where: {username: req.params.username} })
       .then(function(data){
-        console.log(data.id); 
-        Query.findAll({where: {UserId: data.id} })
-          .then(function(data){
-            res.render('newquery', {queries: data});
-        });
+        res.render('seekers', { id: data.id });
     });
+        
+});
+
+router.get('/newquery/:id', function(req, res) {
+    res.redirect('/results/'+req.params.id);
         
 });
 
@@ -96,7 +86,7 @@ router.post('/newquery', function(req, res) {
 });
 
 router.put('/query/insert/:id', function(req, res) {
-    console.log('updating query for user: ' + req.params.id);
+    //console.log('updating query for user: ' + req.params.id);
     Query.update({queryName: req.body.queryName, 
                  html: req.body.q1,
                  css: req.body.q2, //should be q2's value
@@ -105,11 +95,11 @@ router.put('/query/insert/:id', function(req, res) {
                  node: req.body.q5
                 },{where: {UserId: req.params.id}})
     .then(function(){
-        res.redirect('/savedqueries');
+        res.redirect('/savedqueries/'+req.params.id);
     });
 });
 
-router.get('/results', function(req,res){ //query results
+router.get('/results/:id', function(req,res){ //query results
   Geek.findAll({
     where: {
       html: {
@@ -132,15 +122,15 @@ router.get('/results', function(req,res){ //query results
      if (renderJSON) {
           res.json(data);
         } else {
-        res.render('results', {geeks: data});
+        res.render('results', {id : req.params.id, queries: data});
 }
     });
 });
 
 /////SAVED QUERIES//// For logged in user to view their saved queries by UserId
 //This will return saved queries based on the id passed
-router.get("/savedqueries", function(req, res) {
-    Query.findOne({where: {id:"3" } }) //req.params.id
+router.get("/savedqueries/:id", function(req, res) {
+    Query.findOne({where: {id: req.params.id} }) //req.params.id
       .then(function(data){
         if (renderJSON) {
           res.json(data);
@@ -170,6 +160,7 @@ router.get('/editprofile', function(req, res) {
           res.render('editprofile');
         }
 });
+
 router.post('/editprofile', function(req, res) {
    console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
     + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
@@ -182,8 +173,8 @@ router.post('/editprofile', function(req, res) {
 
 
 
-router.get("/myskills", function(req, res) { //This should get their current skills according to logged in UserId
-    Geek.findOne({where: {UserId:"3" } })//req.params.id
+router.get("/myskills/:id", function(req, res) { //This should get their current skills according to logged in UserId
+    Geek.findOne({where: {UserId:req.params.id } })//req.params.id
       .then(function(data){
         if (renderJSON) {
           res.json(data);

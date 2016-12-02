@@ -7,7 +7,6 @@ module.exports.show = function(req, res) {
 }
 
 module.exports.signup = function(req, res) {
-  var id = req.body.id;
   var username = req.body.username;
   var password = req.body.password;
   var password2 = req.body.password2;
@@ -26,7 +25,6 @@ module.exports.signup = function(req, res) {
   var salt = bcrypt.genSaltSync(10)
   var hashedPassword = bcrypt.hashSync(password, salt)
   var newUser = {
-    id: id,
     username: username,
     salt: salt,
     password: hashedPassword,
@@ -34,11 +32,8 @@ module.exports.signup = function(req, res) {
   }
   
   User.create(newUser).then(function() {
-      // if(userType=='seeker') {
-       res.redirect('/newquery')
-      // } else {
-      //   res.redirect('/geeks');
-      // }
+       res.redirect('/newquery/' + User.id)
+     
   }).catch(function(error) {
     req.flash('error', "Please, choose a different username.")
     res.redirect('/signup')

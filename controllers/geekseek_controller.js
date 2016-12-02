@@ -35,6 +35,7 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true  
 }));
+
 router.get('/currentuser', function (req, res){
     User.findOne({where: {id: req.params.id} })
       .then(function(data){
@@ -73,12 +74,12 @@ router.post('/dashboard', function(req, res) {
 /////NEW QUERY//// For logged in user to create, submit, save their query, review results
 //This will insert the query in the Query table based on the id passed
 router.get('/newquery', function(req, res) {
-        if (renderJSON) {
-          res.json(data);
-        } else {
+        
           res.render('newquery');
-        }
+        
 });
+
+
 
 router.post('/newquery', function(req, res) {
    console.log("selections : [ " + req.body.queryName + "-" + req.body.q1 +" - " + req.body.q2 +" - "
@@ -145,7 +146,7 @@ router.get("/savedqueries", function(req, res) {
 /////EDIT PROFILE//// For logged in user to edit their username(email), password, zipcode
 router.get("/user/find/:id", function(req, res) { //This will return the information of a User based on the id passed
 
-    User.findOne({where: {id: req.params.id} })
+    User.findOne({where: {user: req.params.id} })
       .then(function(data){
         if (renderJSON) {
           res.json(data);

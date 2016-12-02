@@ -32,62 +32,64 @@
 
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <form method="POST" action="/editprofile" class="form-editprofile">
-		<h4><strong>HTML</strong></h4>
-	 	<select class="chosen" name="q1">
-	 		<option value=""></option>
+    
+    {{!-- <form action="/editprofile" method="POST" class="form-editprofile"> --}}
+    <form action="/geek/update/{{this.id}}?_method=PUT" method="POST">
+    <h4><strong>HTML</strong></h4>
+    <select class="chosen" name="q1">
+      <option value=""></option>
             <option value="1">1 (Weak)</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
-      	</select>
+        </select>
 
-		<h4><strong>CSS</strong></h4>
-		<select class="chosen" name="q2">
-	 		<option value=""></option>
+    <h4><strong>CSS</strong></h4>
+    <select class="chosen" name="q2">
+      <option value=""></option>
             <option value="1">1 (Weak)</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
-      	</select>
+        </select>
 
 
-		<h4><strong>Javascript</h4>
-	 	<select class="chosen" name="q3">
-	 		<option value=""></option>
+    <h4><strong>Javascript</h4>
+    <select class="chosen" name="q3">
+      <option value=""></option>
             <option value="1">1 (Weak)</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
-      	</select>
+        </select>
 
 
-		<h4><strong>MySQL</h4>
-	 	<select class="chosen" name="q4">
-	 		<option value=""></option>
+    <h4><strong>MySQL</h4>
+    <select class="chosen" name="q4">
+      <option value=""></option>
             <option value="1">1 (Weak)</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
-      	</select>
+        </select>
 
 
-		<h4><strong>Node</h4>
-	 	<select class="chosen" name="q5">
-	 		<option value=""></option>
+    <h4><strong>Node</h4>
+    <select class="chosen" name="q5">
+      <option value=""></option>
             <option value="1">1 (Weak)</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
-      	</select>
+        </select>
 
-            <!-- Submit Button -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit`</button>
+        <!-- Submit Button -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   </form>
 </div>
 </div>

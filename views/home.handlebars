@@ -3,6 +3,10 @@
 a {color:white;}
 h1,h2,h3 {color:white;}
 p {color:white;}
+.row {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
 </style>
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-inverse">
@@ -38,7 +42,7 @@ p {color:white;}
 
 {{!-- ///ABOUT//
  --}}	    
- 	<div class="col-md-8">
+ 	<div class="col-md-8 col-centered">
 	      <h2 class="sub-header">GEEKSEEK</h2>
 	      <div class="table-responsive">
 	        <h2 class="sub-header">Welcome!</h2>
@@ -54,7 +58,7 @@ p {color:white;}
 </div>
 
 {{!-- //SIGN UP --}}
-     <div class="col-md-4">
+     <div class="col-md-4 col-centered">
             <form method="POST" action="/signup" class="form-signin">
 	    <h2 class="form-signin-heading">Create an account</h2>
 	    
@@ -89,6 +93,7 @@ p {color:white;}
 	    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 	  </form>
       </div>
+
     
 
     </div>

@@ -20,12 +20,20 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-         <li><a href="/newquery/{{id}}" >New Query</a></li>
-        <li class="activeG"><a href="/savedqueries/{{id}}">Saved Queries </a></li>
-        <li><a href="/editprofile/{{id}}">Edit Profile</a></li>
+
+     <ul class="nav nav-sidebar seek">
+        <h3>SEEK AND YE SHALL FIND</h3>
+
+        <li><a href="/newquery/{{id}}" >New Query</a></li>
+
+        <li class="active"><a href="/savedqueries/{{id}}">Saved Queries </a></li>
+</ul>
+<ul class ="nav nav-sidebar geek">
+        <h3>GEEKS R US</h3>
         <li><a href="/myskills">My Skills</a></li>
-      </ul>
+          <a href="/currentuser"class="active"><h3>Edit Profile</h3></a></li>
+
+    </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-14 col-md-offset-2 main">
         <table class="table table-striped">

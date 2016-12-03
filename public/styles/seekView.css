@@ -119,7 +119,7 @@ body {
 .seek > .active > a:focus {
   color: #fff;
   background-color: #51b9ff;
-  box-shadow:0px 7px 30px #000 !important;
+  box-shadow:0px 7px 30px #000 ;
 }
 
 .geek > li > a {

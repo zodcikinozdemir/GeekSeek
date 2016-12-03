@@ -41,7 +41,7 @@ router.post('/login',
 
 
 router.get('/currentuser', function (req, res){
-    User.findOne({where: {id: userID} })
+    User.findOne({where: {id:userID} })
       .then(function(data){
        if (renderJSON) {
           res.json(data);
@@ -66,7 +66,7 @@ router.get('/seeker/:username', function(req, res) {
     User.findOne({where: {username: req.params.username} })
       .then(function(data){
           userID = data.id;
-        res.render('seekers', { id: data.id });
+        res.render('seekers', {id: data.id});
     });
         
 });

@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var sequelize = require('Sequelize');
+var sequelize = require('sequelize');
 var models = require('../models');
 var conn = models.sequelize;
 

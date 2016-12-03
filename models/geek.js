@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Geek = sequelize.define('Geek', {
-    geekid: {
+    id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true

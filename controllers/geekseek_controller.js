@@ -33,25 +33,23 @@ router.get('/login', function(req, res) {
   res.render('login');
 });
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/newquery',
-    failureRedirect: '/login',
-    failureFlash: true  
-}));
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' , failureFlash: true}),
+  function(req, res) {
+    res.redirect('/seeker/' + req.body.username);
+  });
+
 
 router.get('/currentuser', function (req, res){
-    User.findOne({where: {id: req.params.id} })
+    User.findOne({where: {id: userID} })
       .then(function(data){
-        if (renderJSON) {
+       if (renderJSON) {
           res.json(data);
         } else {
-          res.render({user: data});
+          res.render('editprofile', {id:userID, user:data});
         }
     });
 });
-
-
-
 
 /////SIGNUP////
 router.get('/signup', signupController.show);
@@ -67,26 +65,53 @@ router.get('/logout', function(req, res) {
 router.get('/seeker/:username', function(req, res) {
     User.findOne({where: {username: req.params.username} })
       .then(function(data){
+          userID = data.id;
         res.render('seekers', { id: data.id });
     });
         
 });
 
 router.get('/newquery/:id', function(req, res) {
-    res.redirect('/results/'+req.params.id);
+    res.render('newquery', {id : req.params.id});
         
 });
 
-
+router.get('/newquery', function(req, res) {
+    res.render('newquery', {id : userID});
+        
+});
 
 router.post('/newquery', function(req, res) {
-   console.log("selections : [ " + req.body.queryName + "-" + req.body.q1 +" - " + req.body.q2 +" - "
-    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
-   res.render('newquery'); 
+   Geek.findAll({
+    where: {
+      html: {
+        gte: req.body.q1
+      },
+      css: {
+        gte: req.body.q2,
+      },
+      javascript: {
+        gte: req.body.q3
+      },
+      mysql: {
+        gte: req.body.q4
+      },
+      node: {
+        gte: req.body.q5
+      },
+    }
+   }).then(function(data){
+     if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('results', {id : req.params.id, queries: data});
+        }
+    });
+
 });
 
 router.put('/query/insert/:id', function(req, res) {
-    //console.log('updating query for user: ' + req.params.id);
+    console.log('updating query for user: ' + req.params.id);
     Query.update({queryName: req.body.queryName, 
                  html: req.body.q1,
                  css: req.body.q2, //should be q2's value
@@ -127,89 +152,107 @@ router.get('/results/:id', function(req,res){ //query results
     });
 });
 
+router.get('/results', function(req,res){ //query results
+  Geek.findAll({
+    where: {
+      html: {
+        gte: req.body.q1
+      },
+      css: {
+        gte: req.body.q2,
+      },
+      javascript: {
+        gte: req.body.q3
+      },
+      mysql: {
+        gte: req.body.q4
+      },
+      node: {
+        gte: req.body.q5
+      },
+    }
+  }).then(function(data){
+     if (renderJSON) {
+          res.json(data);
+        } else {
+        res.render('results', {id : userID, queries: data});
+}
+    });
+});
+
 /////SAVED QUERIES//// For logged in user to view their saved queries by UserId
 //This will return saved queries based on the id passed
 router.get("/savedqueries/:id", function(req, res) {
-    Query.findOne({where: {id: req.params.id} }) //req.params.id
+    Query.findAll({where: {id: userID} }) //
       .then(function(data){
         if (renderJSON) {
           res.json(data);
         } else {
-          //res.render('editprofile', {geeks: data});
-          res.render('savedqueries', {queries: data});
+          res.render('savedqueries', {id : userID, queries: data});
+        }
+    });
+});
+
+router.get("/savedqueries", function(req, res) {
+    Query.findAll({where: {id: userID} }) //
+      .then(function(data){
+        if (renderJSON) {
+          res.json(data);
+        } else {
+          res.render('savedqueries', {id : userID, queries: data});
         }
     });
 });
 
 /////EDIT PROFILE//// For logged in user to edit their username(email), password, zipcode
 router.get("/user/find/:id", function(req, res) { //This will return the information of a User based on the id passed
-
-    User.findOne({where: {user: req.params.id} })
+    User.findOne({where: {user: userID} })
       .then(function(data){
         if (renderJSON) {
           res.json(data);
         } else {
-          res.render('editprofile', {users: data});
+          res.render('editprofile', {id: userID, users: data});
         }
     });
 });
+
 router.get('/editprofile/:id', function(req, res) {
         if (renderJSON) {
           res.json(data);
         } else {
-          res.render('editprofile', {id:req.params.id});
+          res.render('editprofile', {id:userID});
         }
 });
 
-router.post('/editprofile', function(req, res) {
-   console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
-    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
-   res.render('editprofile'); 
-});
-
-
-
-/////////////MY SKILLS////////////////////////
-
-
-
-router.get("/myskills/:id", function(req, res) { //This should get their current skills according to logged in UserId
-    Geek.findOne({where: {UserId:req.params.id } })//req.params.id
-      .then(function(data){
+router.get('/editprofile', function(req, res) {
         if (renderJSON) {
           res.json(data);
         } else {
-          res.render('myskills', {geeks: data});
+          res.render('editprofile', {id:userID});
         }
-    });
-});
-
-router.get('/editskills', function(req, res) {
-        if (renderJSON) {
-          // res.json(data);
-          res.render('/editskills');
-        } else {
-          res.render('myskills');
-        }
-});
-router.post('/editskills', function(req, res) {
-   console.log("selections : [ " + req.body.q1 +" - " + req.body.q2 +" - "
-    + req.body.q3 +" - "+ req.body.q4 +" - "+ req.body.q5 +"]");
-   res.render('myskills'); 
 });
 
 //This will update the skills in the Geek table based on the id passed
-router.put('/geek/update/:id', function(req, res) {
-    console.log('updating users geek skills: ' + req.params.id);
-    Geek.update({html: req.body.q1, 
-                 css: req.body.q2,
-                 javascript: req.body.q3,
-                 mysql: req.body.q4,
-                 node: req.body.q5
-                },{where: {UserId: req.params.id}})
-    .then(function(){
-        res.redirect('myskills');
-    });
+router.post('/geek/update', function(req, res) {
+    var newGeek = { html: req.body.q1, 
+                    css: req.body.q2,
+                    javascript: req.body.q3,
+                    mysql: req.body.q4,
+                    node: req.body.q5,
+                    UserId : userID
+                   }  
+    Geek.findOne({where: {UserId: userID}})
+    .then(
+      function(user) { 
+         Geek.update( newGeek, {where: {UserId: userID}})
+         .then(function(){
+         });
+      },
+      function(err) { 
+        Geek.create(newGeek)
+         .then(function(){
+         });
+      });
 });
 
 //this will delete a Geek record based on the id passed
@@ -217,6 +260,20 @@ router.delete('/geek/delete/:id', function (req, res) {
     Geek.destroy({where: {id: req.params.id}})
     .then(function(){
         res.redirect('myskills');
+    });
+});
+
+router.delete('/geek/delete', function (req, res) {
+    Geek.destroy({where: {id: userID}})
+    .then(function(){
+        //res.redirect('myskills');
+    });
+});
+
+router.get('/myskills', function (req, res) {
+    Geek.findOne({where: {UserId: userID}})
+    .then(function(data){
+        res.render('myskills', {id: userID, skills: data});
     });
 });
 

@@ -1,17 +1,15 @@
 {{#section 'head'}}
      <link rel="stylesheet" href="/styles/seekView.css">
- 
  {{/section}}
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/dashboard">GeekSeek</a>
+      <a class="navbar-brand" href="#">GeekSeek</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
             <li><a id="currentuser" href="/currentuser">USER ID: {{id}}</a></li>
-
         <li><a id="logout-link" href="/logout">Logout</a></li>
       </ul>
     </div>
@@ -22,12 +20,10 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-         <li><a href="/newquery/{{id}}" >New Query</a></li>
+        <li class="activeG"><a href="/newquery/{{id}}" >New Query</a></li>
         <li><a href="/savedqueries/{{id}}">Saved Queries </a></li>
-        <li><a href="/editprofile/{{id}}">Edit Profile</a></li>
-        <li class="activeG"><a href="/myskills/{{id}}">My Skills</a></li>
-
-
+        <li><a href="/currentuser">Edit Profile</a></li>
+        <li><a href="/myskills">My Skills</a></li>
       </ul>
   </div>
 
@@ -107,71 +103,13 @@
   <input type="queryName" id="queryName" name="queryName" class="form-control" placeholder="Give this Query a Name">
 <br>
 <!-- Submit Button -->
-  <button class="btn btn-lg btn-primary btn-block" href = '/query/insert/:'+{{id}} type="submit">Submit</button>
+  {{!-- <button class="btn btn-lg btn-primary btn-block" href = '/query/insert/:'+{{id}} type="submit">Submit</button>
+   --}}
+<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   
-
 </div>
 {{!-- Show results of Query
  --}}
- <div class = "row">
- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h2 class="sub-header">Query Results</h2>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-          {{#each queries}}
-          <tr>
-              <td>{{id}}</td>
-              <td>{{queryName}}</td>
-
-              <td>{{html}}</td>
-              <td>{{css}}</td>
-              <td>{{javascript}}</td>
-              <td>{{mysql}}</td>
-              <td>{{node}}</td>
-          </tr>
-        {{/each}}
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
-              <td>dolor</td>
-              <td>sit</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>adipiscing</td>
-              <td>elit</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>odio</td>
-              <td>Praesent</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    </div>
-    </div>
-
-  </div>
+ {{!-- <div class = "row">
+     {{> geekresults queries}}
+  </div> --}}

@@ -23,9 +23,8 @@
         <ul class="nav nav-sidebar">
        <li><a href="/seekers">New Query</a></li>
         <li><a href="/savedqueries">Saved Queries </a></li>
-        <li><a href="/editprofile">Edit Profile</a></li>
-        <li ><a href="/myskills">My Skills</a></li>
-
+        <li><a href="/currentuser">Edit Profile</a></li>
+        <li><a href="/myskills">My Skills</a></li>
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -34,6 +33,7 @@
        <table class="table table-striped">
           <thead>
             <tr>
+              <th>#</th>
               <th>HTML</th>
               <th>CSS</th>
               <th>JavaScript</th>
@@ -43,6 +43,7 @@
           </thead>
           {{#each geeks}}
           <tr>
+              <td>{{UserId}}</td>
               <td>{{html}}</td>
               <td>{{css}}</td>
               <td>{{javascript}}</td>

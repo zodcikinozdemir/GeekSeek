@@ -32,10 +32,7 @@ module.exports.signup = function(req, res) {
   }
   
   User.create(newUser).then(function() {
-
-       //res.redirect('/newquery/' + newUser.username)
-       res.redirect('/seeker/' + newUser.username)
-     
+     res.redirect('/seeker/' + newUser.username)
   }).catch(function(error) {
     req.flash('error', "Please, choose a different username.")
     res.redirect('/signup')

@@ -1,16 +1,15 @@
 {{#section 'head'}}
      <link rel="stylesheet" href="/styles/seekView.css">
- 
  {{/section}}
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/dashboard">GeekSeek</a>
+      <a class="navbar-brand" href="#">GeekSeek</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a id="currentuser" href="/currentuser">USER ID: {{id}}</a></li>
+            <li><a id="currentuser" href="/currentuser">USER ID: {{id}}</a></li>
 
         <li><a id="logout-link" href="/logout">Logout</a></li>
       </ul>
@@ -22,21 +21,33 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-         <li><a href="/newquery/{{id}}" >New Query</a></li>
+        <li ><a href="/newquery/{{id}}" >New Query</a></li>
         <li><a href="/savedqueries/{{id}}">Saved Queries </a></li>
-        <li><a href="/editprofile/{{id}}">Edit Profile</a></li>
-        <li class="activeG"><a href="/myskills/{{id}}">My Skills</a></li>
-
-
+        <li class="activeG"><a href="/currentuser">Edit Profile</a></li>
+        <li><a href="/myskills">My Skills</a></li>
       </ul>
-    </div>
+  </div>
 
+<div class = "container">
 
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    
-    {{!-- <form action="/editprofile" method="POST" class="form-editprofile"> --}}
-    <form action="/geek/update/{{this.id}}?_method=PUT" method="POST">
-    <h4><strong>HTML</strong></h4>
+{{!-- choose rankings on skills --}}
+  <div class="col-sm-9 col-sm-offset-3 col-md-14 col-md-offset-2 main">
+   <div class="table-responsive">
+       <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>UserId</th>           
+              <th>ZipCode</th>
+            </tr>
+          </thead>
+      <tbody>
+      <tr><td>{{user.username}}</td><td>{{user.zipCode}}</td></tr>
+      </tbody>
+      </table>
+    <form method="POST" action="/geek/update" class="form-editprofile">
+  <div class="col-sm-2">
+      <h4><strong>HTML</strong></h4>
+
     <select class="chosen" name="q1">
       <option value=""></option>
             <option value="1">1 (Weak)</option>
@@ -45,8 +56,12 @@
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
         </select>
+      </div>
+  
 
+  <div class="col-sm-2">
     <h4><strong>CSS</strong></h4>
+
     <select class="chosen" name="q2">
       <option value=""></option>
             <option value="1">1 (Weak)</option>
@@ -55,7 +70,9 @@
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
         </select>
+</div>
 
+<div class="col-sm-2">
 
     <h4><strong>Javascript</h4>
     <select class="chosen" name="q3">
@@ -66,7 +83,8 @@
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
         </select>
-
+</div>
+      <div class="col-sm-2">
 
     <h4><strong>MySQL</h4>
     <select class="chosen" name="q4">
@@ -77,9 +95,9 @@
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
         </select>
-
-
-    <h4><strong>Node</h4>
+</div>
+<div class="col-sm-2">
+  <h4><strong>Node</h4>
     <select class="chosen" name="q5">
       <option value=""></option>
             <option value="1">1 (Weak)</option>
@@ -88,10 +106,19 @@
             <option value="4">4</option>
             <option value="5">5 (Strong)</option>
         </select>
+</div>
+<br>
 
-        <!-- Submit Button -->
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-  </form>
+<br>
+<br>
+<br>
+
+<br>
+<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+</form>  
 </div>
-</div>
-</div>
+{{!-- Show results of Query
+ --}}
+ {{!-- <div class = "row">
+     {{> geekresults queries}}
+  </div> --}}

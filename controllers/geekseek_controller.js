@@ -41,13 +41,42 @@ router.post('/login',
 
 
 router.get('/currentuser', function (req, res){
-    User.findOne({where: {id:userID} })
-      .then(function(data){
-       if (renderJSON) {
+  var profile = {
+    username: "",
+    zipcode: "",
+    html: 0,
+    css: 0,
+    javascript: 0,
+    mysql: 0,
+    node: 0
+  };
+
+  User.findOne({where: { id:userID} })
+      .then(function(data){ 
+        profile.username = data.username;
+        profile.zipcode = data.zipCode;
+   });
+
+  Geek.findOne({where: { UserId:userID} })
+      .then(function(data){ 
+        if (renderJSON) {
           res.json(data);
         } else {
-          res.render('editprofile', {id:userID, user:data});
+          profile.html = data.html;
+          profile.css = data.css;
+          profile.javascript = data.javascript;
+          profile.mysql = data.mysql;
+          profile.node = data.node;
+          res.render('editprofile', {id:userID, profile:profile});
         }
+  });
+});
+
+router.get('/currentuser/:id', function (req, res){
+    console.log("Getting skills for userId: " + req.params.id);
+    Geek.findOne({where: {userId:req.params.id} })
+      .then(function(data){ 
+          res.json(data);
     });
 });
 
@@ -219,6 +248,8 @@ router.get("/user/find/:id", function(req, res) { //This will return the informa
 });
 
 router.get('/editprofile/:id', function(req, res) {
+          res.json(data);
+
         if (renderJSON) {
           res.json(data);
         } else {
@@ -236,6 +267,7 @@ router.get('/editprofile', function(req, res) {
 
 //This will update the skills in the Geek table based on the id passed
 router.post('/geek/update', function(req, res) {
+    console.log ("/geek/update/" + userID + " " + req.body);
     var newGeek = { html: req.body.q1, 
                     css: req.body.q2,
                     javascript: req.body.q3,
@@ -243,6 +275,8 @@ router.post('/geek/update', function(req, res) {
                     node: req.body.q5,
                     UserId : userID
                    }  
+    console.log (newGeek);
+
     Geek.findOne({where: {UserId: userID}})
     .then(
       function(data) {
@@ -286,7 +320,7 @@ router.delete('/geek/delete', function (req, res) {
 router.get('/myskills', function (req, res) {
     Geek.findOne({where: {UserId: userID}})
     .then(function(data){
-        res.render('myskills', {id: userID, skills: data});
+         res.render('myskills', {id: userID, skills: data});
     });
 });
 

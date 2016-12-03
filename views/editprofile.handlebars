@@ -24,17 +24,17 @@
     <div class="col-sm-3 col-md-2 sidebar">
 
       <ul class="nav nav-sidebar seek">
-<h3>SEEK AND YE SHALL FIND</h3>
+        <h3>SEEK AND YE SHALL FIND</h3>
         <li ><a href="/newquery/{{id}}" >New Query</a></li>
         <li><a href="/savedqueries/{{id}}">Saved Queries </a></li>
-</ul>
-<ul class ="nav nav-sidebar geek">
+      </ul>
+      <ul class ="nav nav-sidebar geek">
         <h3>GEEKS R US</h3>
         <li><a href="/myskills">My Skills</a></li>
 
-  <a href="/currentuser"class="active"><h3>Edit Profile</h3></a></li>
+        <a href="/currentuser"class="active"><h3>Edit Profile</h3></a></li>
 
-    </ul>  
+      </ul>  
 
   </div>
 
@@ -51,80 +51,23 @@
             </tr>
           </thead>
       <tbody>
-      <tr><td>{{user.username}}</td><td>{{user.zipCode}}</td></tr>
+      <tr><td>{{profile.username}}</td><td>{{profile.zipcode}}</td></tr>
       </tbody>
       </table>
     <form method="POST" action="/geek/update" class="form-editprofile">
-  <div class="col-sm-2">
-      <h4><strong>HTML</strong></h4>
-
-    <select class="chosen" name="q1">
-      <option value=""></option>
-            <option value="1">1 (Weak)</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5 (Strong)</option>
-        </select>
-      </div>
-  
-
-  <div class="col-sm-2">
-    <h4><strong>CSS</strong></h4>
-
-    <select class="chosen" name="q2">
-      <option value=""></option>
-            <option value="1">1 (Weak)</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5 (Strong)</option>
-        </select>
-</div>
-
-<div class="col-sm-2">
-
-    <h4><strong>Javascript</h4>
-    <select class="chosen" name="q3">
-      <option value=""></option>
-            <option value="1">1 (Weak)</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5 (Strong)</option>
-        </select>
-</div>
-      <div class="col-sm-2">
-
-    <h4><strong>MySQL</h4>
-    <select class="chosen" name="q4">
-      <option value=""></option>
-            <option value="1">1 (Weak)</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5 (Strong)</option>
-        </select>
-</div>
-<div class="col-sm-2">
-  <h4><strong>Node</h4>
-    <select class="chosen" name="q5">
-      <option value=""></option>
-            <option value="1">1 (Weak)</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5 (Strong)</option>
-        </select>
-</div>
-<br>
-
-<br>
-<br>
-<br>
-
-<br>
-<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      <label for="html">HTML: </label>
+      <input type="text" id="html" name="html" class="form-control" value={{profile.html}} required autofocus width="200">
+      <label for="css">CSS: </label>
+      <input type="text" id="css" name="css" class="form-control" value={{profile.css}} required autofocus width="200">
+      <label for="js">Javascript: </label>
+      <input type="text" id="js" name="js" class="form-control" value={{profile.javascript}} required autofocus width="200">
+      <label for="sql">MySQL: </label>
+      <input type="text" id="sql" name="sql" class="form-control" value={{profile.mysql}} required autofocus width="200">
+      <label for="node">Node: </label>
+      <input type="text" id="node" name="node" class="form-control" value={{profile.node}} required autofocus width="200">
+      <br>
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 </form>  
 </div>
 {{!-- Show results of Query

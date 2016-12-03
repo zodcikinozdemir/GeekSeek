@@ -20,16 +20,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar seek">
-      
-        <li ><a href="/newquery{{id}}">New Query </a></li>
-        <li><a href="/savedqueries{{id}}">Saved Queries </a></li>
-        <li class="active"><a href="/currentuser">Edit Profile</li>
-        </ul>
-        <ul class="nav nav-sidebar geek">
-        <li><a href="#">“Are you a geek and you want to be found? SET IT AND FORGET IT!"</a></li>
-        <li ><a href="/myskills">My Skills</a></li>
-        
+      <ul class="nav nav-sidebar">
+        <li ><a href="/newquery/{{id}}" >New Query</a></li>
+        <li><a href="/savedqueries/{{id}}">Saved Queries </a></li>
+        <li class="activeG"><a href="/currentuser">Edit Profile</a></li>
+        <li><a href="/myskills">My Skills</a></li>
       </ul>
   </div>
 
@@ -122,7 +117,6 @@
 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 </form>  
 </div>
-
 {{!-- Show results of Query
  --}}
  {{!-- <div class = "row">

@@ -17,10 +17,6 @@ body {
  * Global add-ons
  */
 
- #profile_button{
-  margin-top:4%;
- }
-
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
@@ -32,7 +28,6 @@ body {
  */
 .navbar-fixed-top {
   border: 0;
-  /*box-shadow:0px 3px 30px #000;*/
 }
 
 /*
@@ -42,7 +37,6 @@ body {
 /* Hide for mobile, show later */
 .sidebar {
   display: none;
-  box-shadow:0px 3px 10px #000;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -55,9 +49,8 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    /*background-color: #5196ff;*/
+    background-color: #5196ff;
     border-right: 1px solid #eee;
-    background: linear-gradient(#5196ff 60%, #ffb951 40%)
   }
 }
 
@@ -66,15 +59,11 @@ body {
   margin-right: -21px; /* 20px padding + 1px border */
   margin-bottom: 20px;
   margin-left: -20px;
-  text-shadow: 1px 1px 3px black;
-
 }
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
   background-color: #5196ff;
-
-
   color: #222;
 }
 .nav-sidebar > .active > a,
@@ -82,8 +71,6 @@ body {
 .nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #51b9ff;
-  box-shadow:0px 7px 30px #000;
-
   
   
 }
@@ -92,48 +79,9 @@ body {
 .nav-sidebar > .activeG > a:focus {
   color: #fff;
   background-color: #ff9651;
-  box-shadow:0px 7px 30px #000;
   
 }
 
-.geek{
-  z-index: 1000;
-  padding-bottom: 160%;
-  background-color: #ffb951;
-}
-.geek > .active > a,
-.geek > .active > a:hover,
-.geek > .active > a:focus {
-  color: #fff;
-  background-color: #ff9651;
-  box-shadow:0px 7px 30px #000;
-
-}
-.seek{
-  z-index: 1000;
-  padding-bottom: 70%;
-  background-color: #5196ff;
-}
-.seek > .active > a,
-.seek > .active > a:hover,
-.seek > .active > a:focus {
-  color: #fff;
-  background-color: #51b9ff;
-  box-shadow:0px 7px 30px #000 ;
-}
-
-.geek > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-
-  background-color: #ffb951;
-  color: #fff;
-}
-.seek > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-  background-color: #5196ff;
-  color: #fff;}
 
 /*
  * Main content

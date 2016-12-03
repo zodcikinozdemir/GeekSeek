@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "./node_modules/.bin/mocha ./test/test.js"
+    "test": "./node_modules/.bin/mocha ./test/test.js",
+    "heroku-postbuild": "sequelize db:migrate"
   },
   "repository": {
     "type": "git",

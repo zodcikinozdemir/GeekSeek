@@ -35,7 +35,7 @@ CREATE TABLE Seekers
     FOREIGN KEY (UserId) REFERENCES Users(id)
 );
 
-CREATE TABLE Querys
+CREATE TABLE Queries
 (
     id INTEGER  NOT NULL AUTO_INCREMENT,
     queryName varchar(255) NOT NULL,

@@ -10,7 +10,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-      <li><a id="currentuser" href="/editprofile">USER ID: {{id}}</a></li>
+          <li><a id="currentuser" href="/editprofile">USER ID: {{id}}</a></li>
         <li><a id="logout-link" href="/logout">Logout</a></li>
       </ul>
     </div>
@@ -24,11 +24,11 @@
           <li><a href="/newquery/{{id}}" >New Query</a></li>
         <li><a href="/savedqueries/{{id}}">Saved Queries </a></li>
         <li><a href="/currentuser">Edit Profile</a></li>
-        <li><a href="/myskills">My Skills</a></li>
-        <li class="active"><a href="/results/{{id}}">Results</a></li>
+        <li><a href="/results/{{id}}">Results<span></span></a></li>
+        <li class="activeG"><a href="/myskills">My Skills</a></li>
         <br>
         <br><br><br><br><br><br><br>
-      <li><a id="currentuser" href="/currentuser">You are logged in as USER ID: {{id}}</a></li>
+      <li><a id="currentuser" href="/currentuser">You are logged in as USER ID: {{id</a></li>
 
       </ul>
     </div>
@@ -36,20 +36,18 @@
     </div>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h2 class="sub-header">Geek Results</h2>
+      <h2 class="sub-header">My Skills</h2>
       <div class="table-responsive">
         <table class="table table-striped">
           <tr>
-          <th>#</th>
           <th>html</th>
           <th>css</th>
           <th>javascript</th>
           <th>mysql</th>
           <th>node</th>
           </tr>
-          {{#each queries}}
+          {{#each skills}}
           <tr>
-              <td>{{UserId}}</td>
               <td>{{html}}</td>
               <td>{{css}}</td>
               <td>{{javascript}}</td>

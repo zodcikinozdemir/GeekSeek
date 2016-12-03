@@ -5,14 +5,15 @@ CREATE TABLE Users
     zipCode varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     salt varchar(255) NOT NULL,
+    createdAt TIMESTAMP NOT NULL, 
+    updatedAt TIMESTAMP, 
+    deletedAt TIMESTAMP,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE Geeks
 (
     id INTEGER  NOT NULL AUTO_INCREMENT,
-    -- username varchar(100) NOT NULL,
-    -- zipCode varchar(10),
     html INTEGER,
     css INTEGER,
     javascript INTEGER,
@@ -21,16 +22,15 @@ CREATE TABLE Geeks
     UserId INTEGER,
     PRIMARY KEY (id),
     FOREIGN KEY (UserId) REFERENCES Users(id)
-    -- FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE Seekers
 (
     id INTEGER  NOT NULL AUTO_INCREMENT,
-    -- username varchar(100) NOT NULL,
-    -- zipCode varchar(10),
     companyName varchar(255),
     UserId INTEGER,
+    updatedAt TIMESTAMP, 
+    deletedAt TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (UserId) REFERENCES Users(id)
 );
@@ -45,7 +45,6 @@ CREATE TABLE Queries
     mysql INTEGER,
     node INTEGER,
     UserId INTEGER,
-    -- created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (UserId) REFERENCES Users(id)
 );
@@ -56,7 +55,7 @@ CREATE TABLE Skills
     skillName varchar(100) NOT NULL,
     difficulty integer default 0,
     active boolean not null default 1,
-    UserId INTEGER,
-    PRIMARY KEY (id),
-    FOREIGN KEY (UserId) REFERENCES Users(id)
+    createdAt TIMESTAMP NOT NULL, 
+    updatedAt TIMESTAMP,
+    PRIMARY KEY (id)
 );

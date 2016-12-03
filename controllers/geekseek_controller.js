@@ -245,16 +245,27 @@ router.post('/geek/update', function(req, res) {
                    }  
     Geek.findOne({where: {UserId: userID}})
     .then(
-      function(user) { 
-         Geek.update( newGeek, {where: {UserId: userID}})
-         .then(function(){
-         });
-      },
-      function(err) { 
-        Geek.create(newGeek)
-         .then(function(){
-         });
+      function(data) {
+         if(data != null) {
+            Geek.update(newGeek, {where: {UserId: userID}})
+              .then(function(){
+              });
+         } else {
+           Geek.create(newGeek)
+           .then(function(){
+           });   
+         }
       });
+      // function(user) { 
+      //    Geek.update( newGeek, {where: {UserId: userID}})
+      //    .then(function(){
+      //    });
+      // },
+      // function(err) { 
+      //   Geek.create(newGeek)
+      //    .then(function(){
+      //    });
+      // });
 });
 
 //this will delete a Geek record based on the id passed

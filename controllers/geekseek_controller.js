@@ -112,13 +112,18 @@ router.post('/newquery', function(req, res) {
 
 router.put('/query/insert/:id', function(req, res) {
     console.log('updating query for user: ' + req.params.id);
-    Query.update({queryName: req.body.queryName, 
+    Query.create({queryName: req.body.queryName, 
                  html: req.body.q1,
                  css: req.body.q2, //should be q2's value
                  javascript: req.body.q3,
                  mysql: req.body.q4,
-                 node: req.body.q5
-                },{where: {UserId: req.params.id}})
+                 node: req.body.q5,
+                 UserId: req.params.id
+                }
+              //   {where: 
+              //     {UserId: req.params.id}
+              // }
+              )
     .then(function(){
         res.redirect('/savedqueries/'+req.params.id);
     });

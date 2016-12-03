@@ -1,5 +1,7 @@
 {{#section 'head'}}
-<link rel="stylesheet" href="/styles/home.css"
+<link rel="stylesheet" href="/styles/home.css">
+<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+
 {{/section}}
 
 <nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top">
@@ -25,7 +27,7 @@
                           <input type="text" name="username" class="form-control" id="inputUsername SignInEmail" aria-describedby="emailSignIn" placeholder="Username">
                           <input type="password" name="password" class="form-control" id="signInPassword" aria-describedby="passwordSignIn" placeholder="Password">
                         </div>
-                        <button class="btn btn-outline page-scroll" id="login" type = "submit">Login</button>
+                        <button class="btn btn-outline page-scroll btn btn-primary" id="login" type = "submit">Login</button>
                     </form>
                 </ul>
             </div>
@@ -40,26 +42,17 @@
 
 {{!-- ///ABOUT//
  --}}     
-  <div class="col-md-5">
-        <h2 class="sub-header">GEEKSEEK</h2>
-        <div class="table-responsive">
-          <h2 class="sub-header">Welcome!</h2>
-          <div class="table-responsive">
-          <p>This application is a candidate screening service connecting Seekers(recruiters) with Geeks(candidates, or students) using a skill ranking system allowing the Seeker to review the best Geeks who meet their technical skill requirements, without knowing their name, or other personal contact information. Candidates are selected solely based on their skills.</p>
-
-          <h3>HOW IT WORKS</H3>
-          <p>Click on the menu links in the side nav bar to get around</p>
-        </div>
+  <div class="col-md-6">
+	<div class = 'container'>
      </div>
-   </div>
-      <div class="col-md-1">
-</div>
+  </div>
+     
 
 {{!-- //SIGN UP --}}
      <div class="col-md-6">
             <form method="POST" action="/signup" class="form-signin">
-      <h2 class="form-signin-heading">Create an account</h2>
-      
+      <h2 class="form-signin-heading">Looking for a Geek?</h2>
+
       {{#if errorMessage}}
         <div class="alert alert-danger">
           {{errorMessage}}
@@ -67,18 +60,38 @@
       {{/if}}
       {{!-- <input type="radio" name="usertype" value="seeker" checked> Seeker</input>
       <input type="radio" name="usertype" value="geek">Geek</input> --}}
-
+	<div class = 'form-group'>
       <label for="inputUsername" class="sr-only">Username</label>
       <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+      </div>
+      <div class = 'form-group'>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+   </div>
+   <div class = 'form-group' >  
+
       <label for="inputPassword" class="sr-only">Repeat Password</label>
       <input type="password" id="inputPassword2" name="password2" class="form-control" placeholder="Repeat Password" required>
-      <label for="inputzipCode" name = "zipCode" class="sr-only">Zip Code</label>
-  <input type="zipCode" id="inputZipCode" name="zipCode" class="form-control" placeholder="ex. 08854" required>
+     </div>
+     <div class = 'form-group'>
+		<label for="inputzipCode" name = "zipCode" class="sr-only">Zip Code</label>
+  		<input type="zipCode" id="inputZipCode" name="zipCode" class="form-control" placeholder="ex. 08854" required>
+  	</div>
      
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+      <button class="btn btn-lg btn-warning btn-block" type="submit">Sign up</button>
     </form>
+    <br>
+    <br>
+        <div class="table-responsive">
+          <h2 class="sub-header">HOW IT WORKS</h2>
+
+          <div class="table-responsive">
+  
+          <p>If you're a Geek, set your skills and wait for the contact to pour in!<br>
+          If you're a Seeker, run a query and find yourself a Geek!
+          <h3>AND IT GETS BETTER--You can be BOTH!</h3>
+          
+         </p>
       </div>
     
 

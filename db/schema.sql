@@ -5,9 +5,6 @@ CREATE TABLE Users
     zipCode varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     salt varchar(255) NOT NULL,
-    createdAt TIMESTAMP NOT NULL, 
-    updatedAt TIMESTAMP, 
-    deletedAt TIMESTAMP,
     PRIMARY KEY (id)
 );
 
@@ -29,8 +26,6 @@ CREATE TABLE Seekers
     id INTEGER  NOT NULL AUTO_INCREMENT,
     companyName varchar(255),
     UserId INTEGER,
-    updatedAt TIMESTAMP, 
-    deletedAt TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (UserId) REFERENCES Users(id)
 );
@@ -55,7 +50,5 @@ CREATE TABLE Skills
     skillName varchar(100) NOT NULL,
     difficulty integer default 0,
     active boolean not null default 1,
-    createdAt TIMESTAMP NOT NULL, 
-    updatedAt TIMESTAMP,
     PRIMARY KEY (id)
 );
